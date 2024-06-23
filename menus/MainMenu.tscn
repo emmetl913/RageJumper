@@ -1,4 +1,18 @@
-[gd_scene format=3 uid="uid://ds82a7nwjpj1g"]
+[gd_scene load_steps=9 format=3 uid="uid://ds82a7nwjpj1g"]
+
+[ext_resource type="Script" path="res://menus/MainMenu.gd" id="1_bcu1u"]
+[ext_resource type="Texture2D" uid="uid://ducyygq6vv3ni" path="res://assets/startgamebutton.png" id="1_fo5go"]
+[ext_resource type="Texture2D" uid="uid://wfrygd5i1n2v" path="res://assets/quitbutton.png" id="2_i5b78"]
+[ext_resource type="Texture2D" uid="uid://bbko7wvi6o82j" path="res://assets/startgamebuttonhover.png" id="2_reni1"]
+[ext_resource type="Texture2D" uid="uid://5yfgbvwcp8m0" path="res://assets/quitbuttonhover.png" id="4_2h7x2"]
+[ext_resource type="Texture2D" uid="uid://bjjcu87w0vnv0" path="res://assets/title.png" id="6_4dawo"]
+
+[sub_resource type="Gradient" id="Gradient_v45be"]
+offsets = PackedFloat32Array(0.980519, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mb7io"]
+gradient = SubResource("Gradient_v45be")
+fill_from = Vector2(1, 0)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -7,3 +21,40 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_bcu1u")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 256.0
+texture = SubResource("GradientTexture2D_mb7io")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 96.0
+offset_right = 192.0
+offset_bottom = 164.0
+
+[node name="StartGame" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_fo5go")
+texture_hover = ExtResource("2_reni1")
+stretch_mode = 3
+
+[node name="QuitButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_i5b78")
+texture_hover = ExtResource("4_2h7x2")
+stretch_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 16.0
+offset_right = 224.0
+offset_bottom = 80.0
+texture = ExtResource("6_4dawo")
+stretch_mode = 3
+
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
