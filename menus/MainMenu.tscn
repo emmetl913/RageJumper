@@ -57,4 +57,5 @@ offset_bottom = 80.0
 texture = ExtResource("6_4dawo")
 stretch_mode = 3
 
+[connection signal="pressed" from="VBoxContainer/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
