@@ -27,14 +27,19 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, dir * speed, acceleration) 
 	else:
 		velocity.x = lerp(velocity.x, 0.0, friction)
-	
+	if velocity.x != 0 and is_on_floor():
+		$AnimationPlayer.play("onRun")
+	if velocity.x < 0:
+		$Sprite2D.flip_h = false
+	if velocity.x > 0:
+		$Sprite2D.flip_h = true
 	move_and_slide()
 	
 	
 	#rotate player when in air based on x velocity
 	if can_jump == false and !is_on_floor():
 		#then we are in air
-		$Sprite2D.rotation_degrees = lerpf($Sprite2D.rotation_degrees, velocity.normalized().x * air_rotation_speed, .5)
+		$Sprite2D.rotation_degrees = lerpf($Sprite2D.rotation_degrees, velocity.normalized().x * air_rotation_speed, .3)
 		print(velocity.normalized().x)
 	#Jumping code!
 	if velocity.y > 0:
@@ -76,7 +81,7 @@ func _physics_process(delta):
 	
 func scaleJumpBar():
 	$BackgroundChargeBar.visible = true
-	jumpBar.scale.y = (jump_speed-jumpSpeedStart) / jump_max_speed
+	jumpBar.scale.y = (jump_speed - jumpSpeedStart) / jump_max_speed
 	if jumpBar.scale.y > 1.0:
 		jumpBar.scale.y = 1.0
 func resetJumpBar():
