@@ -19,9 +19,9 @@ func _process(delta):
 	if Input.is_action_just_pressed("pause"):
 		get_tree().paused = not get_tree().paused
 		if get_tree().paused:
-			$PauseMenu.visible = true
+			$Camera2D/PauseMenu.visible = true
 		else:
-			$PauseMenu.visible = false
+			$Camera2D/PauseMenu.visible = false
 	var health = $Player.health
 	if health < old_health:
 		calculate_health_display(health)
@@ -35,21 +35,21 @@ func calculate_health_display(health):
 			full_hearts = health/2
 			print(full_hearts, "full hearts")
 			if full_hearts == 3:
-				$UI/Health/health3.texture = load("res://assets/heart.png")
-				$UI/Health/health2.texture = load("res://assets/heart.png")
-				$UI/Health/health1.texture = load("res://assets/heart.png")
+				$Camera2D/UI/Health/health3.texture = load("res://assets/heart.png")
+				$Camera2D/UI/Health/health2.texture = load("res://assets/heart.png")
+				$Camera2D/UI/Health/health1.texture = load("res://assets/heart.png")
 			if full_hearts == 2:
-				$UI/Health/health1.texture = load("res://assets/heart.png")
-				$UI/Health/health2.texture = load("res://assets/heart.png")
-				$UI/Health/health3.texture = load("res://assets/emptyheart.png")
+				$Camera2D/UI/Health/health1.texture = load("res://assets/heart.png")
+				$Camera2D/UI/Health/health2.texture = load("res://assets/heart.png")
+				$Camera2D/UI/Health/health3.texture = load("res://assets/emptyheart.png")
 			if full_hearts == 1:
-				$UI/Health/health1.texture = load("res://assets/heart.png")
-				$UI/Health/health2.texture = load("res://assets/emptyheart.png")
-				$UI/Health/health3.texture = load("res://assets/emptyheart.png")
+				$Camera2D/UI/Health/health1.texture = load("res://assets/heart.png")
+				$Camera2D/UI/Health/health2.texture = load("res://assets/emptyheart.png")
+				$Camera2D/UI/Health/health3.texture = load("res://assets/emptyheart.png")
 			if full_hearts == 0:
-				$UI/Health/health1.texture = load("res://assets/emptyheart.png")
-				$UI/Health/health2.texture = load("res://assets/emptyheart.png")
-				$UI/Health/health3.texture = load("res://assets/emptyheart.png")
+				$Camera2D/UI/Health/health1.texture = load("res://assets/emptyheart.png")
+				$Camera2D/UI/Health/health2.texture = load("res://assets/emptyheart.png")
+				$Camera2D/UI/Health/health3.texture = load("res://assets/emptyheart.png")
 			empty_hearts = 0
 			half_hearts = 0
 		elif health % 2 == 1:
@@ -57,33 +57,36 @@ func calculate_health_display(health):
 			full_hearts = health/2
 			for i in full_hearts:
 				if i == 1:
-					$UI/Health/health1.texture = load("res://assets/heart.png")
+					$Camera2D/UI/Health/health1.texture = load("res://assets/heart.png")
 				if i == 2:
-					$UI/Health/health2.texture = load("res://assets/heart.png")
+					$Camera2D/UI/Health/health2.texture = load("res://assets/heart.png")
 			half_hearts = 1
 			if full_hearts == 2:
-				$UI/Health/health3.texture = load("res://assets/halfheart.png")
+				$Camera2D/UI/Health/health3.texture = load("res://assets/halfheart.png")
 			else:
-				$UI/Health/health2.texture = load("res://assets/halfheart.png")
+				$Camera2D/UI/Health/health2.texture = load("res://assets/halfheart.png")
 			empty_hearts = 3 - (full_hearts + half_hearts)
 			if empty_hearts == 1:
-				$UI/Health/health3.texture = load("res://assets/emptyheart.png")
+				$Camera2D/UI/Health/health3.texture = load("res://assets/emptyheart.png")
 			if empty_hearts == 2:
-				$UI/Health/health3.texture = load("res://assets/emptyheart.png")
-				$UI/Health/health2.texture = load("res://assets/emptyheart.png")
+				$Camera2D/UI/Health/health3.texture = load("res://assets/emptyheart.png")
+				$Camera2D/UI/Health/health2.texture = load("res://assets/emptyheart.png")
 			if health == 1:
 				print(health, " one health")
 				full_hearts = 0
 				half_hearts = 1
 				empty_hearts = 2
-				$UI/Health/health3.texture = load("res://assets/emptyheart.png")
-				$UI/Health/health2.texture = load("res://assets/emptyheart.png")
-				$UI/Health/health1.texture = load("res://assets/halfheart.png")
+				$Camera2D/UI/Health/health3.texture = load("res://assets/emptyheart.png")
+				$Camera2D/UI/Health/health2.texture = load("res://assets/emptyheart.png")
+				$Camera2D/UI/Health/health1.texture = load("res://assets/halfheart.png")
 
 func _on_resume_pressed():
 	get_tree().paused = not get_tree().paused
-	$PauseMenu.visible = false
+	$Camera2D/PauseMenu.visible = false
 
 
 func _on_return_to_main_menu_pressed():
 	get_tree().change_scene_to_file("res://menus/MainMenu.tscn")
+
+
+

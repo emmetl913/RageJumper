@@ -51,7 +51,7 @@ func detect_collision():
 		collisionList.append(get_slide_collision(i).get_collider().name)
 	var collisionListNames = delete_duplicate_collisions(collisionList)
 	for i in collisionListNames:
-		if i.contains("spike") and can_recieve:
+		if i.contains("DamageColliders") and can_recieve:
 			can_recieve = false
 			$HurtCooldown.start()
 			print("OW")
