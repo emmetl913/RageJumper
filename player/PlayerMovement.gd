@@ -1,6 +1,12 @@
 extends CharacterBody2D
 
 var can_recieve : bool = true
+var coyote_time = 0.1
+var can_jump = false
+
+var can_animate_enter_air = false
+var can_animate_charge_jump = false
+var can_animate_land_jump = false
 
 @export var health = 6
 @export var speed = 300
@@ -10,6 +16,7 @@ var can_recieve : bool = true
 @export var gravity = 1000
 @export_range(0.0, 1.0) var friction = 0.1
 @export_range(0.0 , 1.0) var acceleration = 0.25
+@export var air_rotation_speed= 30
 
 @onready var jumpBar = $BackgroundChargeBar/JumpHeightIndicator
 var jumpSpeedStart = jump_speed
@@ -52,12 +59,28 @@ func _physics_process(delta):
 	if Input.is_action_pressed("jump") and can_jump:
 		jump_speed -= jump_scaler * delta
 		scaleJumpBar()
-	if Input.is_action_just_released("jump") and is_on_floor():
+		if can_animate_charge_jump:
+			$AnimationPlayer.play("onJump")
+			can_animate_charge_jump = false
+	
+		
+	if Input.is_action_just_released("jump") and can_jump:
 		if jump_speed < jump_max_speed:
 			jump_speed = jump_max_speed
+		#ACTUALLY JUMP
 		velocity.y = jump_speed
 		jump_speed = -200
 		resetJumpBar()
+		can_animate_land_jump = true
+		can_animate_enter_air = true
+		
+	if can_animate_enter_air:
+		$AnimationPlayer.play("inAir")	
+		can_animate_enter_air = false
+		
+	if !can_jump:
+		resetJumpBar()
+	
 	detect_collision()
 
 func delete_duplicate_collisions(collisions: Array):
@@ -99,10 +122,10 @@ func scaleJumpBar():
 	if jumpBar.scale.y > 1.0:
 		jumpBar.scale.y = 1.0
 func resetJumpBar():
+	$BackgroundChargeBar.visible = false
 	jumpBar.scale.y = 0.0
+	jump_speed = -200
 
 
-
-
-
-
+func _on_coyote_timer_timeout():
+	can_jump = false
