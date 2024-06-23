@@ -1,23 +1,25 @@
 extends CharacterBody2D
 
-@export var speed = 300
-@export var jump_speed = -200
-@export var jump_scaler = 500
-@export var jump_max_speed = -1000
-@export var gravity = 1000
-@export var air_rotation_speed= 30
-@export_range(0.0, 1.0) var friction = 0.1
-@export_range(0.0 , 1.0) var acceleration = 0.25
-
-@onready var jumpBar = $BackgroundChargeBar/JumpHeightIndicator
-var jumpSpeedStart = jump_speed
-
+var can_recieve : bool = true
 var coyote_time = 0.1
 var can_jump = false
 
 var can_animate_enter_air = false
 var can_animate_charge_jump = false
 var can_animate_land_jump = false
+
+@export var health = 6
+@export var speed = 300
+@export var jump_speed = -200
+@export var jump_scaler = 500
+@export var jump_max_speed = -1000
+@export var gravity = 1000
+@export_range(0.0, 1.0) var friction = 0.1
+@export_range(0.0 , 1.0) var acceleration = 0.25
+@export var air_rotation_speed= 30
+
+@onready var jumpBar = $BackgroundChargeBar/JumpHeightIndicator
+var jumpSpeedStart = jump_speed
 
 func _physics_process(delta):
 	velocity.y += gravity * delta
@@ -81,6 +83,41 @@ func _physics_process(delta):
 	if !can_jump:
 		resetJumpBar()
 	
+	detect_collision()
+
+func delete_duplicate_collisions(collisions: Array):
+	var unique: Array = []
+	for item in collisions:
+		if !unique.has(item):
+			unique.append(item)
+	return unique
+
+func detect_collision():
+	var collisionList: Array
+	#make array of all names of collisions
+	for i in get_slide_collision_count():
+		collisionList.append(get_slide_collision(i).get_collider().name)
+	var collisionListNames = delete_duplicate_collisions(collisionList)
+	for i in collisionListNames:
+		if i.contains("DamageColliders") and can_recieve:
+			can_recieve = false
+			$HurtCooldown.start()
+			print("OW")
+			health -= 1
+			if health > 0:
+				$hurt.play()
+			else:
+				$Sprite2D.visible = false
+				$BackgroundChargeBar.visible = false
+				$DeathTimer.start()
+				$death.play()
+				$deathanim.emitting = true
+
+func _on_death_timer_timeout():
+	get_tree().change_scene_to_file("res://menus/MainMenu.tscn")
+func _on_hurt_cooldown_timeout():
+	can_recieve = true
+
 func scaleJumpBar():
 	$BackgroundChargeBar.visible = false
 	jumpBar.scale.y = (jump_speed - jumpSpeedStart) / jump_max_speed

@@ -1,0 +1,102 @@
+[gd_scene load_steps=12 format=3 uid="uid://dqj5idw6k3krd"]
+
+[ext_resource type="Script" path="res://worlds/main.gd" id="1_85rb6"]
+[ext_resource type="PackedScene" uid="uid://b51w1y56388uq" path="res://player/Player.tscn" id="1_d5x8k"]
+[ext_resource type="PackedScene" uid="uid://b251gtklhssm8" path="res://basic_floor.tscn" id="2_avib3"]
+[ext_resource type="Texture2D" uid="uid://bqalt3x1edoj5" path="res://assets/resumebutton.png" id="3_tc27a"]
+[ext_resource type="Texture2D" uid="uid://d2x7yfysppnob" path="res://assets/heart.png" id="4_bj1gw"]
+[ext_resource type="Texture2D" uid="uid://c8wd83cioildd" path="res://assets/resumebuttonhover.png" id="4_gbfte"]
+[ext_resource type="Texture2D" uid="uid://cvowxqppytbff" path="res://assets/spiketemp.png" id="4_tius3"]
+[ext_resource type="Texture2D" uid="uid://j6clm8vt1rd" path="res://assets/mainmenubutton.png" id="5_pg2ie"]
+[ext_resource type="Texture2D" uid="uid://dxpfgikepjkec" path="res://assets/mainmenubuttonpng.png" id="6_qquf2"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_373e5"]
+texture = ExtResource("4_tius3")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.875, 8, -6.5, 4.75, -4, 4.375, -3.75, 1.125, -2.125, 0.5, -2, -3.25, 0, -6.5, 1.625, -3.625, 2.25, 0.375, 3.75, 0.5, 3.625, 4.125, 5.375, 4.625, 6.375, 8)
+
+[sub_resource type="TileSet" id="TileSet_0x2f4"]
+physics_layer_0/collision_layer = 5
+sources/0 = SubResource("TileSetAtlasSource_373e5")
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_85rb6")
+
+[node name="Player" parent="." instance=ExtResource("1_d5x8k")]
+process_mode = 1
+position = Vector2(37, 14)
+collision_mask = 5
+jump_scaler = 1000
+jump_max_speed = -600
+gravity = 1500
+friction = 0.6
+
+[node name="BasicFloor" parent="." instance=ExtResource("2_avib3")]
+process_mode = 1
+position = Vector2(138, 251)
+scale = Vector2(166.263, 3.20978)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_0x2f4")
+format = 2
+layer_0/tile_data = PackedInt32Array(851980, 0, 0, 851981, 0, 0, 851982, 0, 0, 851983, 0, 0)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 255.0
+offset_bottom = 258.0
+
+[node name="Health" type="HBoxContainer" parent="UI"]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 16.0
+
+[node name="TextureRect" type="TextureRect" parent="UI/Health"]
+layout_mode = 2
+texture = ExtResource("4_bj1gw")
+stretch_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="UI/Health"]
+layout_mode = 2
+texture = ExtResource("4_bj1gw")
+stretch_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="UI/Health"]
+layout_mode = 2
+texture = ExtResource("4_bj1gw")
+stretch_mode = 2
+
+[node name="PauseMenu" type="Control" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 96.0
+offset_right = 64.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Resume" type="TextureButton" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_tc27a")
+texture_hover = ExtResource("4_gbfte")
+
+[node name="ReturnToMainMenu" type="TextureButton" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_pg2ie")
+texture_hover = ExtResource("6_qquf2")
+
+[connection signal="pressed" from="PauseMenu/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/ReturnToMainMenu" to="." method="_on_return_to_main_menu_pressed"]
