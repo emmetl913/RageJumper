@@ -58,7 +58,9 @@ func _physics_process(delta):
 		jump_speed -= jump_scaler * delta
 		scaleJumpBar()
 		if can_animate_charge_jump:
+			#$AnimationPlayer.stop()
 			$AnimationPlayer.play("onJump")
+		
 			can_animate_charge_jump = false
 	
 		
@@ -80,7 +82,7 @@ func _physics_process(delta):
 		resetJumpBar()
 	
 func scaleJumpBar():
-	$BackgroundChargeBar.visible = true
+	$BackgroundChargeBar.visible = false
 	jumpBar.scale.y = (jump_speed - jumpSpeedStart) / jump_max_speed
 	if jumpBar.scale.y > 1.0:
 		jumpBar.scale.y = 1.0
