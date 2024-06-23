@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://2msyrxgm5xjk"]
+
+[ext_resource type="Script" path="res://sacred_gem_node.gd" id="1_i3hvs"]
+[ext_resource type="Texture2D" uid="uid://bramb66sa005b" path="res://assets/sacred_gem.png" id="1_umtri"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1dq5o"]
+size = Vector2(16, 16)
+
+[node name="SacredGemNode" type="Node2D"]
+script = ExtResource("1_i3hvs")
+
+[node name="SacredGemSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_umtri")
+
+[node name="SacredGemArea" type="Area2D" parent="."]
+
+[node name="SacredGemCollision" type="CollisionShape2D" parent="SacredGemArea"]
+shape = SubResource("RectangleShape2D_1dq5o")
+
+[connection signal="body_entered" from="SacredGemArea" to="." method="_on_sacred_gem_area_body_entered"]

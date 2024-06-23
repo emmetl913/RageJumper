@@ -105,7 +105,7 @@ _data = {
 "onRun": SubResource("Animation_wswpq")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(0.98374, 0.985765)
 script = ExtResource("1_do1lc")
 speed = 150
