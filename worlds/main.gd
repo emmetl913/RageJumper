@@ -13,6 +13,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 @warning_ignore("unused_parameter")
 func _process(delta):
+	#Camera controls
+	$Camera2D.position.y = 128 + (floor($Player.position.y / 256) * 256)
+	
 	if Input.is_action_just_pressed("pause"):
 		get_tree().paused = not get_tree().paused
 		if get_tree().paused:

@@ -14,6 +14,7 @@ size = Vector2(8, 8)
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.98374, 0.985765)
 script = ExtResource("1_do1lc")
+speed = 150
 friction = 0.8
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
