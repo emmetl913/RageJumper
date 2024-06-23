@@ -38,7 +38,7 @@ process_mode = 1
 position = Vector2(138, 251)
 scale = Vector2(166.263, 3.20978)
 
-[node name="spike" type="TileMap" parent="."]
+[node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_0x2f4")
 format = 2
 layer_0/tile_data = PackedInt32Array(851980, 0, 0, 851981, 0, 0, 851982, 0, 0, 851983, 0, 0)

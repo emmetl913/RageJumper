@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+var can_recieve : bool = true
+
 @export var health = 6
 @export var speed = 300
 @export var jump_speed = -200
@@ -33,10 +35,36 @@ func _physics_process(delta):
 		velocity.y = jump_speed
 		jump_speed = -200
 		resetJumpBar()
-	
+	detect_collision()
+
+func delete_duplicate_collisions(collisions: Array):
+	var unique: Array = []
+	for item in collisions:
+		if !unique.has(item):
+			unique.append(item)
+	return unique
+
+func detect_collision():
+	var collisionList: Array
+	#make array of all names of collisions
+	for i in get_slide_collision_count():
+		collisionList.append(get_slide_collision(i).get_collider().name)
+	var collisionListNames = delete_duplicate_collisions(collisionList)
+	for i in collisionListNames:
+		if i.contains("spike") and can_recieve:
+			can_recieve = false
+			$HurtCooldown.start()
+			print("OW")
+
+func _on_hurt_cooldown_timeout():
+	can_recieve = true
+
 func scaleJumpBar():
 	jumpBar.scale.y = jump_speed / jump_max_speed
 	if jumpBar.scale.y > 1.0:
 		jumpBar.scale.y = 1.0
 func resetJumpBar():
 	jumpBar.scale.y = 0.0
+
+
+
