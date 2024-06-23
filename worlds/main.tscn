@@ -28,6 +28,10 @@ script = ExtResource("1_85rb6")
 process_mode = 1
 position = Vector2(37, 14)
 collision_mask = 5
+jump_scaler = 1000
+jump_max_speed = -600
+gravity = 1500
+friction = 0.6
 
 [node name="BasicFloor" parent="." instance=ExtResource("2_avib3")]
 process_mode = 1
