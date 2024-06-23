@@ -5,11 +5,19 @@ extends CharacterBody2D
 @export var jump_scaler = 500
 @export var jump_max_speed = -1000
 @export var gravity = 1000
+@export var air_rotation_speed= 30
 @export_range(0.0, 1.0) var friction = 0.1
 @export_range(0.0 , 1.0) var acceleration = 0.25
 
 @onready var jumpBar = $BackgroundChargeBar/JumpHeightIndicator
 var jumpSpeedStart = jump_speed
+
+var coyote_time = 0.1
+var can_jump = false
+
+var can_animate_enter_air = false
+var can_animate_charge_jump = false
+var can_animate_land_jump = false
 
 func _physics_process(delta):
 	velocity.y += gravity * delta
@@ -23,14 +31,47 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	
-	if Input.is_action_pressed("jump") and is_on_floor():
+	#rotate player when in air based on x velocity
+	if can_jump == false and !is_on_floor():
+		#then we are in air
+		$Sprite2D.rotation_degrees = lerpf($Sprite2D.rotation_degrees, velocity.normalized().x * air_rotation_speed, .5)
+		print(velocity.normalized().x)
+	#Jumping code!
+	if velocity.y > 0:
+		can_animate_land_jump = true
+	if is_on_floor() and can_jump == false:
+		can_jump = true
+		can_animate_charge_jump = true
+		$Sprite2D.rotation_degrees = 0
+		if can_animate_land_jump:
+			$AnimationPlayer.play("onLand")
+			can_animate_land_jump = false
+	elif can_jump == true and $CoyoteTimer.is_stopped():
+		$CoyoteTimer.start(coyote_time)
+
+	if Input.is_action_pressed("jump") and can_jump:
 		jump_speed -= jump_scaler * delta
 		scaleJumpBar()
-	if Input.is_action_just_released("jump") and is_on_floor():
+		if can_animate_charge_jump:
+			$AnimationPlayer.play("onJump")
+			can_animate_charge_jump = false
+	
+		
+	if Input.is_action_just_released("jump") and can_jump:
 		if jump_speed < jump_max_speed:
 			jump_speed = jump_max_speed
+		#ACTUALLY JUMP
 		velocity.y = jump_speed
 		jump_speed = -200
+		resetJumpBar()
+		can_animate_land_jump = true
+		can_animate_enter_air = true
+		
+	if can_animate_enter_air:
+		$AnimationPlayer.play("inAir")	
+		can_animate_enter_air = false
+		
+	if !can_jump:
 		resetJumpBar()
 	
 func scaleJumpBar():
@@ -41,3 +82,8 @@ func scaleJumpBar():
 func resetJumpBar():
 	$BackgroundChargeBar.visible = false
 	jumpBar.scale.y = 0.0
+	jump_speed = -200
+
+
+func _on_coyote_timer_timeout():
+	can_jump = false

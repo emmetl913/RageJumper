@@ -82,7 +82,6 @@ texture_hover = ExtResource("6_qquf2")
 [node name="Camera2D" type="Camera2D" parent="."]
 process_mode = 4
 position = Vector2(128, 0)
-scale = Vector2(1, 1)
 script = ExtResource("5_gly5f")
 
 [connection signal="pressed" from="PauseMenu/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
