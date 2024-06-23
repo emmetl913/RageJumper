@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqj5idw6k3krd"]
+[gd_scene load_steps=9 format=3 uid="uid://dqj5idw6k3krd"]
 
 [ext_resource type="Script" path="res://worlds/main.gd" id="1_85rb6"]
 [ext_resource type="PackedScene" uid="uid://b51w1y56388uq" path="res://player/Player.tscn" id="1_d5x8k"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://c8wd83cioildd" path="res://assets/resumebuttonhover.png" id="4_gbfte"]
 [ext_resource type="Texture2D" uid="uid://j6clm8vt1rd" path="res://assets/mainmenubutton.png" id="5_pg2ie"]
 [ext_resource type="Texture2D" uid="uid://dxpfgikepjkec" path="res://assets/mainmenubuttonpng.png" id="6_qquf2"]
+
+[sub_resource type="TileSet" id="TileSet_4k1n8"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_85rb6")
@@ -48,6 +50,10 @@ texture_hover = ExtResource("4_gbfte")
 layout_mode = 2
 texture_normal = ExtResource("5_pg2ie")
 texture_hover = ExtResource("6_qquf2")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_4k1n8")
+format = 2
 
 [connection signal="pressed" from="PauseMenu/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/ReturnToMainMenu" to="." method="_on_return_to_main_menu_pressed"]
