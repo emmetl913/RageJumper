@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dg0ixh1pbxy1f"]
+
+[ext_resource type="Texture2D" uid="uid://uh12lbqt5w03" path="res://assets/pixel.png" id="2_ivb7g"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_61hru"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(8, 8, 1)
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+linear_accel_max = 35.51
+radial_accel_max = 50.0
+
+[node name="death" type="GPUParticles2D"]
+emitting = false
+amount = 1024
+process_material = SubResource("ParticleProcessMaterial_61hru")
+texture = ExtResource("2_ivb7g")
+lifetime = 0.5
+one_shot = true

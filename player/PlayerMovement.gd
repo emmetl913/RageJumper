@@ -55,7 +55,18 @@ func detect_collision():
 			can_recieve = false
 			$HurtCooldown.start()
 			print("OW")
+			health -= 1
+			if health > 0:
+				$hurt.play()
+			else:
+				$Sprite2D.visible = false
+				$BackgroundChargeBar.visible = false
+				$DeathTimer.start()
+				$death.play()
+				$deathanim.emitting = true
 
+func _on_death_timer_timeout():
+	get_tree().change_scene_to_file("res://menus/MainMenu.tscn")
 func _on_hurt_cooldown_timeout():
 	can_recieve = true
 
@@ -65,6 +76,9 @@ func scaleJumpBar():
 		jumpBar.scale.y = 1.0
 func resetJumpBar():
 	jumpBar.scale.y = 0.0
+
+
+
 
 
 
