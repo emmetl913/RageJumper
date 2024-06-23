@@ -22,12 +22,13 @@ scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_i4xbv")
 
 [node name="BackgroundChargeBar" type="Sprite2D" parent="."]
-position = Vector2(9.14876, 9.53674e-07)
+visible = false
+position = Vector2(10.1653, -5.68434e-14)
 scale = Vector2(1, 16.2311)
 texture = ExtResource("3_rtwg3")
 
 [node name="JumpHeightIndicator" type="Sprite2D" parent="BackgroundChargeBar"]
-position = Vector2(0, 0.5)
+position = Vector2(-9.69437e-07, 0.499998)
 rotation = -3.14159
 texture = ExtResource("4_7ehte")
 centered = false

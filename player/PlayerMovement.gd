@@ -34,8 +34,10 @@ func _physics_process(delta):
 		resetJumpBar()
 	
 func scaleJumpBar():
-	jumpBar.scale.y = jump_speed / jump_max_speed
+	$BackgroundChargeBar.visible = true
+	jumpBar.scale.y = (jump_speed-jumpSpeedStart) / jump_max_speed
 	if jumpBar.scale.y > 1.0:
 		jumpBar.scale.y = 1.0
 func resetJumpBar():
+	$BackgroundChargeBar.visible = false
 	jumpBar.scale.y = 0.0
