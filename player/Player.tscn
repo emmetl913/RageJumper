@@ -1,15 +1,17 @@
 [gd_scene load_steps=15 format=3 uid="uid://b51w1y56388uq"]
 
 [ext_resource type="Script" path="res://player/PlayerMovement.gd" id="1_do1lc"]
-[ext_resource type="Texture2D" uid="uid://beryrksvjmto1" path="res://player/Dude.png" id="1_g0c6c"]
+[ext_resource type="Texture2D" uid="uid://1gh1pulmghts" path="res://player/dude2.png" id="2_r485j"]
 [ext_resource type="Texture2D" uid="uid://ba6fyb3eanykg" path="res://DefaultFloorTex.png" id="3_rtwg3"]
 [ext_resource type="Shader" path="res://player/JumpBarShader.gdshader" id="3_urxwx"]
 [ext_resource type="AudioStream" uid="uid://biwv6jcohxjnl" path="res://assets/sounds/hurt.wav" id="5_jsc37"]
 [ext_resource type="AudioStream" uid="uid://cs11hgo6puhhe" path="res://assets/sounds/death.wav" id="6_0iuef"]
 [ext_resource type="PackedScene" uid="uid://dg0ixh1pbxy1f" path="res://player/deathshader.tscn" id="7_uain0"]
+[ext_resource type="Texture2D" uid="uid://0ufx22tivity" path="res://player/hat!.png" id="5_swuni"]
+[ext_resource type="Script" path="res://player/hatfollow.gd" id="6_iddn5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4xbv"]
-size = Vector2(8, 8)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smq6v"]
+size = Vector2(15.2479, 11.7369)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2jp4f"]
 
@@ -44,10 +46,10 @@ tracks/0/path = NodePath("Sprite2D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15),
+"times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1, 0.3)]
+"values": [Vector2(1, 1), Vector2(1, 0.2)]
 }
 
 [sub_resource type="Animation" id="Animation_d774l"]
@@ -66,11 +68,41 @@ tracks/0/keys = {
 "values": [Vector2(1, 0.3), Vector2(1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_wswpq"]
+resource_name = "onRun"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1), Vector2(1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_opo0d"]
 _data = {
 "inAir": SubResource("Animation_dh5ap"),
 "onJump": SubResource("Animation_6jptl"),
-"onLand": SubResource("Animation_d774l")
+"onLand": SubResource("Animation_d774l"),
+"onRun": SubResource("Animation_wswpq")
 }
 
 [node name="Player" type="CharacterBody2D"]
@@ -80,15 +112,17 @@ speed = 150
 friction = 0.8
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 2
 texture_filter = 1
-position = Vector2(0, 7.10108)
-texture = ExtResource("1_g0c6c")
+position = Vector2(0, 10.1444)
+texture = ExtResource("2_r485j")
 centered = false
-offset = Vector2(-7.22, -14.135)
+offset = Vector2(-8, -16.035)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(2, 2)
-shape = SubResource("RectangleShape2D_i4xbv")
+position = Vector2(0, 5.0722)
+scale = Vector2(0.87, 0.88)
+shape = SubResource("RectangleShape2D_smq6v")
 
 [node name="BackgroundChargeBar" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_2jp4f")
@@ -127,4 +161,13 @@ libraries = {
 
 [connection signal="timeout" from="HurtCooldown" to="." method="_on_hurt_cooldown_timeout"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+[node name="Hat!" type="Sprite2D" parent="."]
+visible = false
+z_index = 4
+texture_filter = 1
+position = Vector2(0, -1.01444)
+scale = Vector2(1, 1)
+texture = ExtResource("5_swuni")
+script = ExtResource("6_iddn5")
+
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]

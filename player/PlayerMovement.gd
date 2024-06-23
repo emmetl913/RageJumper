@@ -22,11 +22,34 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, dir * speed, acceleration) 
 	else:
 		velocity.x = lerp(velocity.x, 0.0, friction)
-	
+	if velocity.x != 0 and is_on_floor():
+		$AnimationPlayer.play("onRun")
+	if velocity.x < 0:
+		$Sprite2D.flip_h = false
+	if velocity.x > 0:
+		$Sprite2D.flip_h = true
 	move_and_slide()
 	
 	
-	if Input.is_action_pressed("jump") and is_on_floor():
+	#rotate player when in air based on x velocity
+	if can_jump == false and !is_on_floor():
+		#then we are in air
+		$Sprite2D.rotation_degrees = lerpf($Sprite2D.rotation_degrees, velocity.normalized().x * air_rotation_speed, .3)
+		print(velocity.normalized().x)
+	#Jumping code!
+	if velocity.y > 0:
+		can_animate_land_jump = true
+	if is_on_floor() and can_jump == false:
+		can_jump = true
+		can_animate_charge_jump = true
+		$Sprite2D.rotation_degrees = 0
+		if can_animate_land_jump:
+			$AnimationPlayer.play("onLand")
+			can_animate_land_jump = false
+	elif can_jump == true and $CoyoteTimer.is_stopped():
+		$CoyoteTimer.start(coyote_time)
+
+	if Input.is_action_pressed("jump") and can_jump:
 		jump_speed -= jump_scaler * delta
 		scaleJumpBar()
 	if Input.is_action_just_released("jump") and is_on_floor():
@@ -71,7 +94,8 @@ func _on_hurt_cooldown_timeout():
 	can_recieve = true
 
 func scaleJumpBar():
-	jumpBar.scale.y = jump_speed / jump_max_speed
+	$BackgroundChargeBar.visible = true
+	jumpBar.scale.y = (jump_speed - jumpSpeedStart) / jump_max_speed
 	if jumpBar.scale.y > 1.0:
 		jumpBar.scale.y = 1.0
 func resetJumpBar():
