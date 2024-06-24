@@ -42,7 +42,6 @@ func _physics_process(delta):
 	if can_jump == false and !is_on_floor():
 		#then we are in air
 		$Sprite2D.rotation_degrees = lerpf($Sprite2D.rotation_degrees, velocity.normalized().x * air_rotation_speed, .3)
-		print(velocity.normalized().x)
 	#Jumping code!
 	if velocity.y > 0:
 		can_animate_land_jump = true
