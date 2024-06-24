@@ -8,7 +8,7 @@ script/source = "extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$SacredGemSprite.visible = true
+	#$SacredGemSprite.visible = false
 	pass
 
 
@@ -19,7 +19,8 @@ func _process(delta):
 
 func _on_sacred_gem_area_body_entered(body):
 	if body.is_in_group(\"Player\"):
-		$SacredGemSprite.visible = false
+		#$SacredGemSprite.visible = false
+		pass
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1dq5o"]

@@ -42,7 +42,6 @@ func _physics_process(delta):
 	if can_jump == false and !is_on_floor():
 		#then we are in air
 		$Sprite2D.rotation_degrees = lerpf($Sprite2D.rotation_degrees, velocity.normalized().x * air_rotation_speed, .3)
-		print(velocity.normalized().x)
 	#Jumping code!
 	if velocity.y > 0:
 		can_animate_land_jump = true
@@ -73,6 +72,7 @@ func _physics_process(delta):
 		resetJumpBar()
 		can_animate_land_jump = true
 		can_animate_enter_air = true
+		$AnimationPlayer.stop(true)
 		
 	if can_animate_enter_air:
 		$AnimationPlayer.play("inAir")	
@@ -119,7 +119,7 @@ func _on_hurt_cooldown_timeout():
 	can_recieve = true
 
 func scaleJumpBar():
-	$BackgroundChargeBar.visible = true
+	$BackgroundChargeBar.visible = false
 	jumpBar.scale.y = (jump_speed - jumpSpeedStart) / jump_max_speed
 	if jumpBar.scale.y > 1.0:
 		jumpBar.scale.y = 1.0
