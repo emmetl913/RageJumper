@@ -15,3 +15,7 @@ func _on_quit_button_pressed():
 
 func _on_start_game_pressed():
 	get_tree().change_scene_to_file("res://worlds/main.tscn")
+
+
+func _on_control_button_pressed():
+	get_tree().change_scene_to_file("res://menus/control.tscn")

@@ -1,17 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://ds82a7nwjpj1g"]
+[gd_scene load_steps=11 format=3 uid="uid://ds82a7nwjpj1g"]
 
 [ext_resource type="Script" path="res://menus/MainMenu.gd" id="1_bcu1u"]
 [ext_resource type="Texture2D" uid="uid://ducyygq6vv3ni" path="res://assets/startgamebutton.png" id="1_fo5go"]
 [ext_resource type="Texture2D" uid="uid://wfrygd5i1n2v" path="res://assets/quitbutton.png" id="2_i5b78"]
 [ext_resource type="Texture2D" uid="uid://bbko7wvi6o82j" path="res://assets/startgamebuttonhover.png" id="2_reni1"]
 [ext_resource type="Texture2D" uid="uid://5yfgbvwcp8m0" path="res://assets/quitbuttonhover.png" id="4_2h7x2"]
+[ext_resource type="Texture2D" uid="uid://bxgd7rgbg8uk6" path="res://assets/controlsbutton.png" id="4_k6gmq"]
+[ext_resource type="Texture2D" uid="uid://dk8iiooyy8yug" path="res://assets/controlsbuttonhover.png" id="5_fjd5o"]
 [ext_resource type="Texture2D" uid="uid://bjjcu87w0vnv0" path="res://assets/title.png" id="6_4dawo"]
 
-[sub_resource type="Gradient" id="Gradient_v45be"]
+[sub_resource type="Gradient" id="Gradient_kyoey"]
 offsets = PackedFloat32Array(0.980519, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_mb7io"]
-gradient = SubResource("Gradient_v45be")
+gradient = SubResource("Gradient_kyoey")
 fill_from = Vector2(1, 0)
 
 [node name="MainMenu" type="Control"]
@@ -40,6 +42,12 @@ offset_bottom = 164.0
 layout_mode = 2
 texture_normal = ExtResource("1_fo5go")
 texture_hover = ExtResource("2_reni1")
+stretch_mode = 3
+
+[node name="ControlButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_k6gmq")
+texture_hover = ExtResource("5_fjd5o")
 stretch_mode = 3
 
 [node name="QuitButton" type="TextureButton" parent="VBoxContainer"]
@@ -98,4 +106,5 @@ theme_override_font_sizes/font_size = 1500
 text = "00"
 
 [connection signal="pressed" from="VBoxContainer/StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="VBoxContainer/ControlButton" to="." method="_on_control_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
