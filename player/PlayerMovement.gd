@@ -59,9 +59,7 @@ func _physics_process(delta):
 		jump_speed -= jump_scaler * delta
 		scaleJumpBar()
 		if can_animate_charge_jump:
-			#$AnimationPlayer.stop()
 			$AnimationPlayer.play("onJump")
-		
 			can_animate_charge_jump = false
 	
 		
@@ -74,6 +72,7 @@ func _physics_process(delta):
 		resetJumpBar()
 		can_animate_land_jump = true
 		can_animate_enter_air = true
+		$AnimationPlayer.stop(true)
 		
 	if can_animate_enter_air:
 		$AnimationPlayer.play("inAir")	
