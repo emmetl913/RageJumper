@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dqj5idw6k3krd"]
+[gd_scene load_steps=18 format=3 uid="uid://dqj5idw6k3krd"]
 
 [ext_resource type="Script" path="res://worlds/main.gd" id="1_85rb6"]
 [ext_resource type="PackedScene" uid="uid://b51w1y56388uq" path="res://player/Player.tscn" id="1_d5x8k"]
@@ -10,7 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://j6clm8vt1rd" path="res://assets/mainmenubutton.png" id="5_pg2ie"]
 [ext_resource type="Texture2D" uid="uid://dxpfgikepjkec" path="res://assets/mainmenubuttonpng.png" id="6_qquf2"]
 [ext_resource type="Texture2D" uid="uid://bo8e6uylfjqe8" path="res://assets/tilemap.png" id="8_wiumb"]
+[ext_resource type="PackedScene" uid="uid://csrfxqlb7b0mc" path="res://Door.tscn" id="10_c0yms"]
 [ext_resource type="Texture2D" uid="uid://d2x7yfysppnob" path="res://assets/heart.png" id="11_50tmc"]
+[ext_resource type="PackedScene" uid="uid://bu4ky5npwa88u" path="res://sacred_gem_node.tscn" id="11_a3cap"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47sut"]
 texture = ExtResource("8_wiumb")
@@ -66,6 +68,12 @@ z_index = 3
 tile_set = SubResource("TileSet_denni")
 format = 2
 layer_0/tile_data = PackedInt32Array(1441793, 0, 0, 1441794, 0, 0, 1703943, 0, 0, 1703944, 0, 0, 1966084, 0, 0, 1966090, 0, 0, 3276813, 0, 0, 4063233, 0, 0, 4063234, 0, 0, 4849676, 0, 0, 4849677, 0, 0, 4849678, 0, 0, 5111816, 0, 0, 5111815, 0, 0, 5111814, 0, 0)
+
+[node name="SacredGemNode" parent="." instance=ExtResource("11_a3cap")]
+position = Vector2(40, 1256)
+
+[node name="DoorNode" parent="." instance=ExtResource("10_c0yms")]
+position = Vector2(120, 40)
 
 [node name="Player" parent="." instance=ExtResource("1_d5x8k")]
 process_mode = 1
