@@ -142,6 +142,83 @@ texture = ExtResource("11_50tmc")
 layout_mode = 2
 texture = ExtResource("11_50tmc")
 
+[node name="GameTime" type="Control" parent="Camera2D/UI"]
+anchors_preset = 0
+offset_left = 24.0
+offset_top = -3.0
+offset_right = 64.0
+offset_bottom = 37.0
+scale = Vector2(0.1, 0.1)
+
+[node name="minutes2" type="Label" parent="Camera2D/UI/GameTime"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 650.0
+offset_top = 20.0
+offset_right = 863.0
+offset_bottom = 225.0
+scale = Vector2(1.1, 1.1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 150
+text = "00:"
+
+[node name="seconds2" type="Label" parent="Camera2D/UI/GameTime"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 880.0
+offset_top = 20.0
+offset_right = 1093.0
+offset_bottom = 225.0
+scale = Vector2(1.1, 1.1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 150
+text = "00:"
+
+[node name="milliseconds2" type="Label" parent="Camera2D/UI/GameTime"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1110.0
+offset_top = 20.0
+offset_right = 1323.0
+offset_bottom = 225.0
+scale = Vector2(1.1, 1.1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 150
+text = "00:"
+
+[node name="minutes" type="Label" parent="Camera2D/UI/GameTime"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 650.0
+offset_top = 20.0
+offset_right = 863.0
+offset_bottom = 225.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 150
+text = "00:"
+
+[node name="seconds" type="Label" parent="Camera2D/UI/GameTime"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 880.0
+offset_top = 20.0
+offset_right = 1093.0
+offset_bottom = 225.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 150
+text = "00:"
+
+[node name="milliseconds" type="Label" parent="Camera2D/UI/GameTime"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1110.0
+offset_top = 20.0
+offset_right = 1323.0
+offset_bottom = 225.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 150
+text = "00:"
+
 [node name="SacredGemNode" parent="." instance=ExtResource("11_a3cap")]
 position = Vector2(40, 1256)
 

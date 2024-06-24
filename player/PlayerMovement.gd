@@ -110,6 +110,8 @@ func detect_collision():
 				$DeathTimer.start()
 				$death.play()
 				$deathanim.emitting = true
+		if i.contains("DoorNode"):
+			print("on door")
 
 func _on_death_timer_timeout():
 	get_tree().change_scene_to_file("res://menus/MainMenu.tscn")

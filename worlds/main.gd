@@ -1,12 +1,19 @@
 extends Node2D
 
+var player_has_gem : bool
 var old_health : int
 var full_hearts : int
 var half_hearts : int
 var empty_hearts : int
 
+var time: float = 0.0
+var minutes: int = 0
+var seconds: int = 0
+var msec: int = 0 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	player_has_gem = false
 	old_health = 6
 
 
@@ -15,6 +22,34 @@ func _ready():
 func _process(delta):
 	#Camera controls
 	$Camera2D.position.y = 128 + (floor($Player.position.y / 256) * 256)
+	if ($SacredGemNode/SacredGemSprite.visible == false):
+		player_has_gem = true
+		$DoorNode.has_gem = true
+		if ($DoorNode/ExitText.visible == true):
+			if Input.is_action_just_released("interact"):
+				if Besttime.bestmin == 0 and Besttime.bestsec == 0 and Besttime.bestmsec == 0:
+					Besttime.bestsec = seconds
+					Besttime.bestmin = minutes
+					Besttime.bestmsec = msec
+				elif minutes <= Besttime.bestmin:
+					if seconds <= Besttime.bestsec:
+						if msec < Besttime.bestmsec:
+							Besttime.bestsec = seconds
+							Besttime.bestmin = minutes
+							Besttime.bestmsec = msec
+				Besttime.save()
+				get_tree().change_scene_to_file("res://menus/MainMenu.tscn")
+	
+	time += delta
+	msec = fmod(time, 1) *100
+	seconds = fmod(time, 60)
+	minutes = fmod(time, 3600) / 60
+	$Camera2D/UI/GameTime/minutes.text = "%02d:" % minutes
+	$Camera2D/UI/GameTime/minutes2.text = "%02d:" % minutes
+	$Camera2D/UI/GameTime/seconds.text = "%02d:" % seconds
+	$Camera2D/UI/GameTime/seconds2.text = "%02d:" % seconds
+	$Camera2D/UI/GameTime/milliseconds.text = "%02d" % msec
+	$Camera2D/UI/GameTime/milliseconds2.text = "%02d" % msec
 	
 	if Input.is_action_just_pressed("pause"):
 		get_tree().paused = not get_tree().paused
