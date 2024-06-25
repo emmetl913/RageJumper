@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-var can_recieve : bool = true
+var can_restart_level = false
+var can_recieve_dmg : bool = true
 var coyote_time = 0.1
 var can_jump = false
 
@@ -112,7 +113,7 @@ func _physics_process(delta):
 	if is_on_floor() and can_play_land_sound:
 		print(speedOnGroundImpact)
 		if speedOnGroundImpact != 0:
-			$jumpLand.pitch_scale = -.5 + 1000/speedOnGroundImpact
+			$jumpLand.pitch_scale = -.37 + 1000/speedOnGroundImpact
 			print($jumpLand.pitch_scale)
 		if $jumpLand.pitch_scale <.85:
 			$jumpLand.pitch_scale = .85
@@ -121,6 +122,9 @@ func _physics_process(delta):
 		can_play_land_sound = false
 	
 	detect_collision()
+	
+	if(Input.is_action_just_pressed("restart")):
+		get_tree().reload_current_scene()
 	
 func delete_duplicate_collisions(collisions: Array):
 	var unique: Array = []
@@ -136,8 +140,8 @@ func detect_collision():
 		collisionList.append(get_slide_collision(i).get_collider().name)
 	var collisionListNames = delete_duplicate_collisions(collisionList)
 	for i in collisionListNames:
-		if i.contains("DamageColliders") and can_recieve:
-			can_recieve = false
+		if i.contains("DamageColliders") and can_recieve_dmg:
+			can_recieve_dmg = false
 			$HurtCooldown.start()
 			print("OW")
 			health -= 1
@@ -155,7 +159,7 @@ func detect_collision():
 func _on_death_timer_timeout():
 	get_tree().change_scene_to_file("res://menus/MainMenu.tscn")
 func _on_hurt_cooldown_timeout():
-	can_recieve = true
+	can_recieve_dmg = true
 
 func scaleJumpBar():
 	$BackgroundChargeBar.visible = false
@@ -170,3 +174,4 @@ func resetJumpBar():
 
 func _on_coyote_timer_timeout():
 	can_jump = false
+
