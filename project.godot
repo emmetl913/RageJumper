@@ -30,6 +30,13 @@ window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 window/vsync/vsync_mode=0
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "orange",
+"res://assets/sounds/": "red"
+}
+
 [input]
 
 jump={
