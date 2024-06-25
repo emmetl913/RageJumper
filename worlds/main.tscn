@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dqj5idw6k3krd"]
+[gd_scene load_steps=20 format=3 uid="uid://dqj5idw6k3krd"]
 
 [ext_resource type="Script" path="res://worlds/main.gd" id="1_85rb6"]
 [ext_resource type="PackedScene" uid="uid://b51w1y56388uq" path="res://player/Player.tscn" id="1_d5x8k"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://csi2l7s3qw224" path="res://Door.tscn" id="10_c0yms"]
 [ext_resource type="Texture2D" uid="uid://d2x7yfysppnob" path="res://assets/heart.png" id="11_50tmc"]
 [ext_resource type="PackedScene" uid="uid://bu4ky5npwa88u" path="res://sacred_gem_node.tscn" id="11_a3cap"]
+[ext_resource type="Texture2D" uid="uid://cp1g3s4xidbsu" path="res://assets/restartbutton.png" id="11_lgbq1"]
+[ext_resource type="Texture2D" uid="uid://bwjidlpd0vcc4" path="res://assets/restartbuttonhover.png" id="12_voygq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47sut"]
 texture = ExtResource("8_wiumb")
@@ -114,6 +116,11 @@ offset_bottom = 40.0
 layout_mode = 2
 texture_normal = ExtResource("3_tc27a")
 texture_hover = ExtResource("4_gbfte")
+
+[node name="Restart" type="TextureButton" parent="Camera2D/PauseMenu/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("11_lgbq1")
+texture_hover = ExtResource("12_voygq")
 
 [node name="ReturnToMainMenu" type="TextureButton" parent="Camera2D/PauseMenu/VBoxContainer"]
 layout_mode = 2
@@ -226,4 +233,5 @@ text = "00:"
 position = Vector2(40, 1256)
 
 [connection signal="pressed" from="Camera2D/PauseMenu/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Camera2D/PauseMenu/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Camera2D/PauseMenu/VBoxContainer/ReturnToMainMenu" to="." method="_on_return_to_main_menu_pressed"]

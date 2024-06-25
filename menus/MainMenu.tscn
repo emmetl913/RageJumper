@@ -9,11 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://dk8iiooyy8yug" path="res://assets/controlsbuttonhover.png" id="5_fjd5o"]
 [ext_resource type="Texture2D" uid="uid://bjjcu87w0vnv0" path="res://assets/title.png" id="6_4dawo"]
 
-[sub_resource type="Gradient" id="Gradient_kyoey"]
+[sub_resource type="Gradient" id="Gradient_vrnlu"]
 offsets = PackedFloat32Array(0.980519, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_mb7io"]
-gradient = SubResource("Gradient_kyoey")
+gradient = SubResource("Gradient_vrnlu")
 fill_from = Vector2(1, 0)
 
 [node name="MainMenu" type="Control"]

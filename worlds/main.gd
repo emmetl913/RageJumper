@@ -27,13 +27,9 @@ func _process(delta):
 		$DoorNode.has_gem = true
 		if ($DoorNode/ExitText.visible == true):
 			if Input.is_action_just_released("interact"):
-				if Besttime.bestmin == 0 and Besttime.bestsec == 0 and Besttime.bestmsec == 0:
-					Besttime.bestsec = seconds
-					Besttime.bestmin = minutes
-					Besttime.bestmsec = msec
-				elif minutes <= Besttime.bestmin:
-					if seconds <= Besttime.bestsec:
-						if msec < Besttime.bestmsec:
+				if minutes <= Besttime.bestmin or Besttime.bestmin == 0:
+					if seconds <= Besttime.bestsec or Besttime.bestsec == 0:
+						if msec < Besttime.bestmsec or Besttime.bestmsec == 0:
 							Besttime.bestsec = seconds
 							Besttime.bestmin = minutes
 							Besttime.bestmsec = msec
@@ -116,7 +112,7 @@ func calculate_health_display(health):
 				$Camera2D/UI/Health/health1.texture = load("res://assets/halfheart.png")
 
 func _on_resume_pressed():
-	get_tree().paused = not get_tree().paused
+	get_tree().paused = false
 	$Camera2D/PauseMenu.visible = false
 
 
@@ -125,3 +121,8 @@ func _on_return_to_main_menu_pressed():
 
 
 
+
+
+func _on_restart_pressed():
+	get_tree().paused = false
+	get_tree().reload_current_scene()
