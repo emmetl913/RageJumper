@@ -21,6 +21,7 @@ grow_vertical = 2
 script = ExtResource("1_mogi2")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 256.0
 offset_bottom = 256.0
 texture = SubResource("GradientTexture2D_resmt")

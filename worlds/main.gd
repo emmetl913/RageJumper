@@ -28,11 +28,15 @@ func _process(delta):
 		if ($DoorNode/ExitText.visible == true):
 			if Input.is_action_just_released("interact"):
 				if minutes <= Besttime.bestmin or Besttime.bestmin == 0:
-					if seconds <= Besttime.bestsec or Besttime.bestsec == 0:
+					if seconds < Besttime.bestsec or Besttime.bestsec == 0:
+						Besttime.bestsec = seconds
+						Besttime.bestmin = minutes
+						Besttime.bestmsec = msec
+					if seconds == Besttime.bestsec:
 						if msec < Besttime.bestmsec or Besttime.bestmsec == 0:
-							Besttime.bestsec = seconds
-							Besttime.bestmin = minutes
-							Besttime.bestmsec = msec
+								Besttime.bestsec = seconds
+								Besttime.bestmin = minutes
+								Besttime.bestmsec = msec
 				Besttime.save()
 				get_tree().change_scene_to_file("res://menus/MainMenu.tscn")
 	
