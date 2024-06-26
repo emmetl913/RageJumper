@@ -8,7 +8,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if Input.is_action_just_pressed("pause"):
+		get_tree().change_scene_to_file("res://world_selector.tscn")
 
 
 
@@ -18,6 +19,8 @@ func _on_button_one_pressed():
 	else: 
 		$levelerror.text = "Sorry, level 1-1 has not been implemented yet"
 
+func _on_button_one_mouse_entered():
+	$Currentbesttime.text = "1-1 Best Time: %02d:" % Besttime.bestmin + "%02d:" % Besttime.bestsec + "%02d" % Besttime.bestmsec
 
 func _on_button_two_pressed():
 	if ResourceLoader.exists("res://worlds/level_1-2.tscn"):
@@ -52,3 +55,6 @@ func _on_button_six_pressed():
 		get_tree().change_scene_to_file("res://worlds/level_1-6.tscn")
 	else: 
 		$levelerror.text = "Sorry, level 1-6 has not been implemented yet"
+
+
+
