@@ -12,7 +12,7 @@ var can_animate_run = false
 
 var can_play_land_sound = true
 
-@export var health = 6
+@export var health = 4
 @export var speed = 300
 @export var jump_speed = -200
 @export var jump_scaler = 500
