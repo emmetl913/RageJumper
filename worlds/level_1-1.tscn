@@ -1,23 +1,23 @@
 [gd_scene load_steps=20 format=3 uid="uid://dqj5idw6k3krd"]
 
-[ext_resource type="Script" path="res://worlds/main.gd" id="1_85rb6"]
-[ext_resource type="PackedScene" uid="uid://b51w1y56388uq" path="res://player/Player.tscn" id="1_d5x8k"]
-[ext_resource type="Texture2D" uid="uid://bbabtmvrrse0g" path="res://assets/IMG1100483739709739420.jpg" id="2_rxs07"]
-[ext_resource type="Texture2D" uid="uid://bqalt3x1edoj5" path="res://assets/resumebutton.png" id="3_tc27a"]
-[ext_resource type="Texture2D" uid="uid://kpcojkmvm0cq" path="res://assets/tile_stone3.png" id="4_8ra1v"]
-[ext_resource type="Texture2D" uid="uid://c8wd83cioildd" path="res://assets/resumebuttonhover.png" id="4_gbfte"]
-[ext_resource type="Script" path="res://worlds/Camera2D.gd" id="5_gly5f"]
-[ext_resource type="Texture2D" uid="uid://j6clm8vt1rd" path="res://assets/mainmenubutton.png" id="5_pg2ie"]
-[ext_resource type="Texture2D" uid="uid://dxpfgikepjkec" path="res://assets/mainmenubuttonpng.png" id="6_qquf2"]
-[ext_resource type="Texture2D" uid="uid://bo8e6uylfjqe8" path="res://assets/tilemap.png" id="8_wiumb"]
-[ext_resource type="PackedScene" uid="uid://csi2l7s3qw224" path="res://Door.tscn" id="10_c0yms"]
-[ext_resource type="Texture2D" uid="uid://d2x7yfysppnob" path="res://assets/heart.png" id="11_50tmc"]
-[ext_resource type="PackedScene" uid="uid://bu4ky5npwa88u" path="res://sacred_gem_node.tscn" id="11_a3cap"]
-[ext_resource type="Texture2D" uid="uid://cp1g3s4xidbsu" path="res://assets/restartbutton.png" id="11_lgbq1"]
-[ext_resource type="Texture2D" uid="uid://bwjidlpd0vcc4" path="res://assets/restartbuttonhover.png" id="12_voygq"]
+[ext_resource type="Script" path="res://worlds/level_1-1.gd" id="1_5br5x"]
+[ext_resource type="Texture2D" uid="uid://bbabtmvrrse0g" path="res://assets/IMG1100483739709739420.jpg" id="2_gktkt"]
+[ext_resource type="Texture2D" uid="uid://bo8e6uylfjqe8" path="res://assets/tilemap.png" id="3_y0b51"]
+[ext_resource type="Texture2D" uid="uid://kpcojkmvm0cq" path="res://assets/tile_stone3.png" id="4_ifjrn"]
+[ext_resource type="PackedScene" uid="uid://bu4ky5npwa88u" path="res://sacred_gem_node.tscn" id="5_t6bdd"]
+[ext_resource type="PackedScene" uid="uid://csi2l7s3qw224" path="res://Door.tscn" id="6_s4p5m"]
+[ext_resource type="PackedScene" uid="uid://b51w1y56388uq" path="res://player/Player.tscn" id="7_ajslp"]
+[ext_resource type="Script" path="res://worlds/Camera2D.gd" id="8_yurp7"]
+[ext_resource type="Texture2D" uid="uid://bqalt3x1edoj5" path="res://assets/resumebutton.png" id="9_8x5w4"]
+[ext_resource type="Texture2D" uid="uid://c8wd83cioildd" path="res://assets/resumebuttonhover.png" id="10_qm75e"]
+[ext_resource type="Texture2D" uid="uid://cp1g3s4xidbsu" path="res://assets/restartbutton.png" id="11_plxpw"]
+[ext_resource type="Texture2D" uid="uid://bwjidlpd0vcc4" path="res://assets/restartbuttonhover.png" id="12_d2pbv"]
+[ext_resource type="Texture2D" uid="uid://j6clm8vt1rd" path="res://assets/mainmenubutton.png" id="13_fx0do"]
+[ext_resource type="Texture2D" uid="uid://dxpfgikepjkec" path="res://assets/mainmenubuttonpng.png" id="14_5hujt"]
+[ext_resource type="Texture2D" uid="uid://d2x7yfysppnob" path="res://assets/heart.png" id="15_f5x57"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47sut"]
-texture = ExtResource("8_wiumb")
+texture = ExtResource("3_y0b51")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -37,7 +37,7 @@ physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_47sut")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dhrhb"]
-texture = ExtResource("4_8ra1v")
+texture = ExtResource("4_ifjrn")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -47,14 +47,14 @@ texture = ExtResource("4_8ra1v")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_dhrhb")
 
-[node name="main" type="Node2D"]
-script = ExtResource("1_85rb6")
+[node name="level 1-1" type="Node2D"]
+script = ExtResource("1_5br5x")
 
 [node name="Img1100483739709739420" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(128, 122)
+position = Vector2(132, -128)
 scale = Vector2(0.713889, 0.713889)
-texture = ExtResource("2_rxs07")
+texture = ExtResource("2_gktkt")
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -73,13 +73,13 @@ tile_set = SubResource("TileSet_denni")
 format = 2
 layer_0/tile_data = PackedInt32Array(1441793, 0, 0, 1441794, 0, 0, 1703943, 0, 0, 1703944, 0, 0, 1966084, 0, 0, 1966090, 0, 0, 3276813, 0, 0, 4063233, 0, 0, 4063234, 0, 0, 4849676, 0, 0, 4849677, 0, 0, 4849678, 0, 0, 5111816, 0, 0, 5111815, 0, 0, 5111814, 0, 0)
 
-[node name="SacredGemNode" parent="." instance=ExtResource("11_a3cap")]
-position = Vector2(40, 1256)
+[node name="SacredGemNode" parent="." instance=ExtResource("5_t6bdd")]
+position = Vector2(56, 1255)
 
-[node name="DoorNode" parent="." instance=ExtResource("10_c0yms")]
+[node name="DoorNode" parent="." instance=ExtResource("6_s4p5m")]
 position = Vector2(120, 40)
 
-[node name="Player" parent="." instance=ExtResource("1_d5x8k")]
+[node name="Player" parent="." instance=ExtResource("7_ajslp")]
 process_mode = 1
 position = Vector2(171, 29)
 jump_scaler = 1000
@@ -90,7 +90,7 @@ friction = 0.6
 [node name="Camera2D" type="Camera2D" parent="."]
 process_mode = 4
 position = Vector2(128, 0)
-script = ExtResource("5_gly5f")
+script = ExtResource("8_yurp7")
 
 [node name="PauseMenu" type="Control" parent="Camera2D"]
 process_mode = 3
@@ -114,18 +114,18 @@ offset_bottom = 40.0
 
 [node name="Resume" type="TextureButton" parent="Camera2D/PauseMenu/VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("3_tc27a")
-texture_hover = ExtResource("4_gbfte")
+texture_normal = ExtResource("9_8x5w4")
+texture_hover = ExtResource("10_qm75e")
 
 [node name="Restart" type="TextureButton" parent="Camera2D/PauseMenu/VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("11_lgbq1")
-texture_hover = ExtResource("12_voygq")
+texture_normal = ExtResource("11_plxpw")
+texture_hover = ExtResource("12_d2pbv")
 
 [node name="ReturnToMainMenu" type="TextureButton" parent="Camera2D/PauseMenu/VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("5_pg2ie")
-texture_hover = ExtResource("6_qquf2")
+texture_normal = ExtResource("13_fx0do")
+texture_hover = ExtResource("14_5hujt")
 
 [node name="UI" type="Control" parent="Camera2D"]
 layout_mode = 3
@@ -142,15 +142,11 @@ offset_bottom = 16.0
 
 [node name="health1" type="TextureRect" parent="Camera2D/UI/Health"]
 layout_mode = 2
-texture = ExtResource("11_50tmc")
+texture = ExtResource("15_f5x57")
 
 [node name="health2" type="TextureRect" parent="Camera2D/UI/Health"]
 layout_mode = 2
-texture = ExtResource("11_50tmc")
-
-[node name="health3" type="TextureRect" parent="Camera2D/UI/Health"]
-layout_mode = 2
-texture = ExtResource("11_50tmc")
+texture = ExtResource("15_f5x57")
 
 [node name="GameTime" type="Control" parent="Camera2D/UI"]
 anchors_preset = 0
@@ -229,8 +225,8 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 150
 text = "00:"
 
-[node name="SacredGemNode2" parent="." instance=ExtResource("11_a3cap")]
-position = Vector2(40, 1256)
+[node name="SacredGemNode2" parent="." instance=ExtResource("5_t6bdd")]
+position = Vector2(56, 1255)
 
 [connection signal="pressed" from="Camera2D/PauseMenu/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Camera2D/PauseMenu/VBoxContainer/Restart" to="." method="_on_restart_pressed"]

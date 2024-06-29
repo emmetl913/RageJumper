@@ -1,0 +1,126 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqf3h0feo2g27"]
+
+[ext_resource type="Script" path="res://menus/temple_level_select.gd" id="1_fc5qv"]
+[ext_resource type="Texture2D" uid="uid://b81a60262iyhb" path="res://assets/levelbutton.png" id="1_n52kp"]
+[ext_resource type="Texture2D" uid="uid://cmm1e8ah7lpqa" path="res://assets/levelbuttonhover.png" id="2_crh4o"]
+
+[sub_resource type="Gradient" id="Gradient_vrnlu"]
+offsets = PackedFloat32Array(0.980519, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gdo2i"]
+gradient = SubResource("Gradient_vrnlu")
+fill_from = Vector2(1, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3yxor"]
+
+[node name="TempleLevelSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fc5qv")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 256.0
+texture = SubResource("GradientTexture2D_gdo2i")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 52.0
+offset_right = 183.0
+offset_bottom = 156.0
+columns = 3
+
+[node name="Button 1-1" type="PanelContainer" parent="GridContainer"]
+layout_mode = 2
+
+[node name="1-1" type="TextureButton" parent="GridContainer/Button 1-1"]
+layout_mode = 2
+texture_normal = ExtResource("1_n52kp")
+texture_hover = ExtResource("2_crh4o")
+
+[node name="Label" type="Label" parent="GridContainer/Button 1-1"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 1
+
+[node name="Button 1-2" type="PanelContainer" parent="GridContainer"]
+layout_mode = 2
+
+[node name="1-2" type="TextureButton" parent="GridContainer/Button 1-2"]
+layout_mode = 2
+texture_normal = ExtResource("1_n52kp")
+texture_hover = ExtResource("2_crh4o")
+
+[node name="Label" type="Label" parent="GridContainer/Button 1-2"]
+layout_mode = 2
+text = "2"
+horizontal_alignment = 1
+
+[node name="Button 1-3" type="PanelContainer" parent="GridContainer"]
+layout_mode = 2
+
+[node name="1-3" type="TextureButton" parent="GridContainer/Button 1-3"]
+layout_mode = 2
+texture_normal = ExtResource("1_n52kp")
+texture_hover = ExtResource("2_crh4o")
+
+[node name="Label" type="Label" parent="GridContainer/Button 1-3"]
+layout_mode = 2
+text = "3"
+horizontal_alignment = 1
+
+[node name="Button 1-4" type="PanelContainer" parent="GridContainer"]
+layout_mode = 2
+
+[node name="1-4" type="TextureButton" parent="GridContainer/Button 1-4"]
+layout_mode = 2
+texture_normal = ExtResource("1_n52kp")
+texture_hover = ExtResource("2_crh4o")
+
+[node name="Label" type="Label" parent="GridContainer/Button 1-4"]
+layout_mode = 2
+text = "4"
+horizontal_alignment = 1
+
+[node name="Button 1-5" type="PanelContainer" parent="GridContainer"]
+layout_mode = 2
+
+[node name="1-5" type="TextureButton" parent="GridContainer/Button 1-5"]
+layout_mode = 2
+texture_normal = ExtResource("1_n52kp")
+texture_hover = ExtResource("2_crh4o")
+
+[node name="Label" type="Label" parent="GridContainer/Button 1-5"]
+layout_mode = 2
+text = "5"
+horizontal_alignment = 1
+
+[node name="Button 1-6" type="PanelContainer" parent="GridContainer"]
+layout_mode = 2
+
+[node name="1-6" type="TextureButton" parent="GridContainer/Button 1-6"]
+layout_mode = 2
+texture_normal = ExtResource("1_n52kp")
+texture_hover = ExtResource("2_crh4o")
+
+[node name="Label" type="Label" parent="GridContainer/Button 1-6"]
+layout_mode = 2
+text = "6"
+horizontal_alignment = 1
+
+[node name="levelerror" type="Label" parent="."]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 190.0
+offset_right = 143.0
+offset_bottom = 213.0
+text = "erge"
+label_settings = SubResource("LabelSettings_3yxor")
+
+[connection signal="pressed" from="GridContainer/Button 1-1/1-1" to="." method="_on__pressed"]

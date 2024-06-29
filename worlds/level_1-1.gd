@@ -13,8 +13,9 @@ var msec: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print("Best min: ", Besttime.bestmin, " Best sec: ", Besttime.bestsec, " Best msec: ", Besttime.bestmsec)
 	player_has_gem = false
-	old_health = 6
+	old_health = 4
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,11 +23,10 @@ func _ready():
 func _process(delta):
 	#Camera controls
 	$Camera2D.position.y = 128 + (floor($Player.position.y / 256) * 256)
-	if ($SacredGemNode/SacredGemSprite.visible == false):
+	if $SacredGemNode/SacredGemSprite.visible == false:
 		player_has_gem = true
 		$DoorNode.has_gem = true
-		if ($DoorNode/ExitText.visible == true):
-			if Input.is_action_just_released("interact"):
+		if $DoorNode.leaving == true:
 				if minutes <= Besttime.bestmin or Besttime.bestmin == 0:
 					if seconds <= Besttime.bestsec or Besttime.bestsec == 0:
 						Besttime.bestsec = seconds
@@ -63,54 +63,22 @@ func _process(delta):
 
 func calculate_health_display(health):
 	print(health)
-	if health <= 6:
+	if health <= 4:
 		if health % 2 != 1:
-			print(health, " even health")
-			full_hearts = health/2
-			print(full_hearts, "full hearts")
-			if full_hearts == 3:
-				$Camera2D/UI/Health/health3.texture = load("res://assets/heart.png")
-				$Camera2D/UI/Health/health2.texture = load("res://assets/heart.png")
-				$Camera2D/UI/Health/health1.texture = load("res://assets/heart.png")
-			if full_hearts == 2:
+			if health == 4:
 				$Camera2D/UI/Health/health1.texture = load("res://assets/heart.png")
 				$Camera2D/UI/Health/health2.texture = load("res://assets/heart.png")
-				$Camera2D/UI/Health/health3.texture = load("res://assets/emptyheart.png")
-			if full_hearts == 1:
+			if health == 2:
 				$Camera2D/UI/Health/health1.texture = load("res://assets/heart.png")
 				$Camera2D/UI/Health/health2.texture = load("res://assets/emptyheart.png")
-				$Camera2D/UI/Health/health3.texture = load("res://assets/emptyheart.png")
-			if full_hearts == 0:
+			if health == 0:
 				$Camera2D/UI/Health/health1.texture = load("res://assets/emptyheart.png")
 				$Camera2D/UI/Health/health2.texture = load("res://assets/emptyheart.png")
-				$Camera2D/UI/Health/health3.texture = load("res://assets/emptyheart.png")
-			empty_hearts = 0
-			half_hearts = 0
 		elif health % 2 == 1:
-			print(health, " odd health")
-			full_hearts = health/2
-			for i in full_hearts:
-				if i == 1:
-					$Camera2D/UI/Health/health1.texture = load("res://assets/heart.png")
-				if i == 2:
-					$Camera2D/UI/Health/health2.texture = load("res://assets/heart.png")
-			half_hearts = 1
-			if full_hearts == 2:
-				$Camera2D/UI/Health/health3.texture = load("res://assets/halfheart.png")
-			else:
+			if health == 3:
 				$Camera2D/UI/Health/health2.texture = load("res://assets/halfheart.png")
-			empty_hearts = 3 - (full_hearts + half_hearts)
-			if empty_hearts == 1:
-				$Camera2D/UI/Health/health3.texture = load("res://assets/emptyheart.png")
-			if empty_hearts == 2:
-				$Camera2D/UI/Health/health3.texture = load("res://assets/emptyheart.png")
-				$Camera2D/UI/Health/health2.texture = load("res://assets/emptyheart.png")
+				$Camera2D/UI/Health/health1.texture = load("res://assets/heart.png")
 			if health == 1:
-				print(health, " one health")
-				full_hearts = 0
-				half_hearts = 1
-				empty_hearts = 2
-				$Camera2D/UI/Health/health3.texture = load("res://assets/emptyheart.png")
 				$Camera2D/UI/Health/health2.texture = load("res://assets/emptyheart.png")
 				$Camera2D/UI/Health/health1.texture = load("res://assets/halfheart.png")
 
