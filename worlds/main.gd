@@ -29,7 +29,10 @@ func _process(delta):
 			if Input.is_action_just_released("interact"):
 				if minutes <= Besttime.bestmin or Besttime.bestmin == 0:
 					if seconds <= Besttime.bestsec or Besttime.bestsec == 0:
-						if msec < Besttime.bestmsec or Besttime.bestmsec == 0:
+						Besttime.bestsec = seconds
+						Besttime.bestmin = minutes
+						Besttime.bestmsec = msec
+					elif msec < Besttime.bestmsec or Besttime.bestmsec == 0:
 							Besttime.bestsec = seconds
 							Besttime.bestmin = minutes
 							Besttime.bestmsec = msec

@@ -81,7 +81,7 @@ position = Vector2(120, 40)
 
 [node name="Player" parent="." instance=ExtResource("1_d5x8k")]
 process_mode = 1
-position = Vector2(121, 26)
+position = Vector2(171, 29)
 jump_scaler = 1000
 jump_max_speed = -600
 gravity = 1500
