@@ -158,7 +158,7 @@ script = ExtResource("6_iddn5")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 2
 position = Vector2(7.87668e-07, 5.57942)
-scale = Vector2(0.986399, 0.41019)
+scale = Vector2(0.901, 0.41)
 shape = SubResource("RectangleShape2D_30yh4")
 
 [node name="BackgroundChargeBar" type="Sprite2D" parent="."]

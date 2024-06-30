@@ -11,6 +11,7 @@ var minutes: int = 0
 var seconds: int = 0
 var msec: int = 0 
 
+@export var timesave_index: int
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("Best min: ", Besttime.bestmin, " Best sec: ", Besttime.bestsec, " Best msec: ", Besttime.bestmsec)
@@ -27,16 +28,19 @@ func _process(delta):
 		player_has_gem = true
 		$DoorNode.has_gem = true
 		if $DoorNode.leaving == true:
-				if minutes <= Besttime.bestmin or Besttime.bestmin == 0:
-					if seconds <= Besttime.bestsec or Besttime.bestsec == 0:
-						Besttime.bestsec = seconds
-						Besttime.bestmin = minutes
-						Besttime.bestmsec = msec
-					elif msec < Besttime.bestmsec or Besttime.bestmsec == 0:
-							Besttime.bestsec = seconds
-							Besttime.bestmin = minutes
-							Besttime.bestmsec = msec
-				Besttime.save()
+				if minutes <= Besttime.bestmin[timesave_index] or Besttime.bestmin[timesave_index] == 0:
+					if seconds < Besttime.bestsec[timesave_index] or Besttime.bestsec[timesave_index] == 0:
+						Besttime.bestsec[timesave_index] = seconds
+						Besttime.bestmin[timesave_index] = minutes
+						Besttime.bestmsec[timesave_index] = msec
+					if seconds == Besttime.bestsec[timesave_index]:
+						if msec < Besttime.bestmsec[timesave_index] or Besttime.bestmsec[timesave_index] == 0:
+								Besttime.bestsec[timesave_index] = seconds
+								Besttime.bestmin[timesave_index] = minutes
+								Besttime.bestmsec[timesave_index] = msec
+				print("Current Run: Best min: ", minutes, " Best sec: ", seconds, " Best msec: ", msec)
+				print("New: Best min: ", Besttime.bestmin[timesave_index], " Best sec: ", Besttime.bestsec[timesave_index], " Best msec: ", Besttime.bestmsec[timesave_index])
+				Besttime.save(timesave_index, minutes, seconds, msec)
 				get_tree().change_scene_to_file("res://menus/MainMenu.tscn")
 	
 	time += delta

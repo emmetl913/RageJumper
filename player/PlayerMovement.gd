@@ -124,8 +124,7 @@ func _physics_process(delta):
 	detect_collision()
 	
 	if(Input.is_action_just_pressed("restart")):
-		print("BruH")
-		get_tree().change_scene_to_file("res://worlds/tutorial.tscn")
+		get_tree().reload_current_scene()
 	
 func delete_duplicate_collisions(collisions: Array):
 	var unique: Array = []
