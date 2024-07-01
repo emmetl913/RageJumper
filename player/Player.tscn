@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b51w1y56388uq"]
+[gd_scene load_steps=26 format=3 uid="uid://b51w1y56388uq"]
 
 [ext_resource type="Script" path="res://player/PlayerMovement.gd" id="1_do1lc"]
 [ext_resource type="Texture2D" uid="uid://1gh1pulmghts" path="res://player/dude2.png" id="2_r485j"]
@@ -134,12 +134,12 @@ collision_mode = 1
 collision_friction = 0.2
 collision_bounce = 0.35
 
-[sub_resource type="Gradient" id="Gradient_0egue"]
+[sub_resource type="Gradient" id="Gradient_7dfhd"]
 offsets = PackedFloat32Array(0.440273, 0.716724)
 colors = PackedColorArray(0.439049, 0.439049, 0.439049, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_45tj7"]
-gradient = SubResource("Gradient_0egue")
+gradient = SubResource("Gradient_7dfhd")
 width = 128
 height = 128
 fill = 1

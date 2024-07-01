@@ -48,12 +48,12 @@ func _process(delta):
 	msec = fmod(time, 1) *100
 	seconds = fmod(time, 60)
 	minutes = fmod(time, 3600) / 60
-	$Camera2D/UI/GameTime/minutes.text = "%02d:" % minutes
-	$Camera2D/UI/GameTime/minutes2.text = "%02d:" % minutes
-	$Camera2D/UI/GameTime/seconds.text = "%02d:" % seconds
-	$Camera2D/UI/GameTime/seconds2.text = "%02d:" % seconds
-	$Camera2D/UI/GameTime/milliseconds.text = "%02d" % msec
-	$Camera2D/UI/GameTime/milliseconds2.text = "%02d" % msec
+	$Camera2D/UILayer/UI/GameTime/minutes.text = "%02d:" % minutes
+	$Camera2D/UILayer/UI/GameTime/minutes2.text = "%02d:" % minutes
+	$Camera2D/UILayer/UI/GameTime/seconds.text = "%02d:" % seconds
+	$Camera2D/UILayer/UI/GameTime/seconds2.text = "%02d:" % seconds
+	$Camera2D/UILayer/UI/GameTime/milliseconds.text = "%02d" % msec
+	$Camera2D/UILayer/UI/GameTime/milliseconds2.text = "%02d" % msec
 	
 	if Input.is_action_just_pressed("pause"):
 		get_tree().paused = not get_tree().paused
@@ -72,30 +72,30 @@ func calculate_health_display(health):
 	if health <= 6:
 		if health % 2 != 1:
 			if health == 6:
-				$Camera2D/UI/Health/health1.texture = load("res://assets/heart.png")
-				$Camera2D/UI/Health/health2.texture = load("res://assets/heart.png")
-				$Camera2D/UI/Health/health3.texture = load("res://assets/heart.png")
+				$Camera2D/UILayer/UI/Health/health1.texture = load("res://assets/heart.png")
+				$Camera2D/UILayer/UI/Health/health2.texture = load("res://assets/heart.png")
+				$Camera2D/UILayer/UI/Health/health3.texture = load("res://assets/heart.png")
 			if health == 4:
-				$Camera2D/UI/Health/health1.texture = load("res://assets/heart.png")
-				$Camera2D/UI/Health/health2.texture = load("res://assets/heart.png")
-				$Camera2D/UI/Health/health3.texture = load("res://assets/emptyheart.png")
+				$Camera2D/UILayer/UI/Health/health1.texture = load("res://assets/heart.png")
+				$Camera2D/UILayer/UI/Health/health2.texture = load("res://assets/heart.png")
+				$Camera2D/UILayer/UI/Health/health3.texture = load("res://assets/emptyheart.png")
 			if health == 2:
-				$Camera2D/UI/Health/health1.texture = load("res://assets/heart.png")
-				$Camera2D/UI/Health/health2.texture = load("res://assets/emptyheart.png")
+				$Camera2D/UILayer/UI/Health/health1.texture = load("res://assets/heart.png")
+				$Camera2D/UILayer/UI/Health/health2.texture = load("res://assets/emptyheart.png")
 			if health == 0:
-				$Camera2D/UI/Health/health1.texture = load("res://assets/emptyheart.png")
-				$Camera2D/UI/Health/health2.texture = load("res://assets/emptyheart.png")
+				$Camera2D/UILayer/UI/Health/health1.texture = load("res://assets/emptyheart.png")
+				$Camera2D/UILayer/UI/Health/health2.texture = load("res://assets/emptyheart.png")
 		elif health % 2 == 1:
 			if health == 5:
-				$Camera2D/UI/Health/health1.texture = load("res://assets/heart.png")
-				$Camera2D/UI/Health/health2.texture = load("res://assets/heart.png")
-				$Camera2D/UI/Health/health3.texture = load("res://assets/halfheart.png")
+				$Camera2D/UILayer/UI/Health/health1.texture = load("res://assets/heart.png")
+				$Camera2D/UILayer/UI/Health/health2.texture = load("res://assets/heart.png")
+				$Camera2D/UILayer/UI/Health/health3.texture = load("res://assets/halfheart.png")
 			if health == 3:
-				$Camera2D/UI/Health/health2.texture = load("res://assets/halfheart.png")
-				$Camera2D/UI/Health/health1.texture = load("res://assets/heart.png")
+				$Camera2D/UILayer/UI/Health/health2.texture = load("res://assets/halfheart.png")
+				$Camera2D/UILayer/UI/Health/health1.texture = load("res://assets/heart.png")
 			if health == 1:
-				$Camera2D/UI/Health/health2.texture = load("res://assets/emptyheart.png")
-				$Camera2D/UI/Health/health1.texture = load("res://assets/halfheart.png")
+				$Camera2D/UILayer/UI/Health/health2.texture = load("res://assets/emptyheart.png")
+				$Camera2D/UILayer/UI/Health/health1.texture = load("res://assets/halfheart.png")
 
 func _on_resume_pressed():
 	get_tree().paused = false

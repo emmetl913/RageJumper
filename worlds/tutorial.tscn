@@ -131,32 +131,32 @@ layout_mode = 2
 texture_normal = ExtResource("13_v2fpv")
 texture_hover = ExtResource("14_qufcq")
 
-[node name="UI" type="Control" parent="Camera2D"]
+[node name="UILayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="UI" type="Control" parent="Camera2D/UILayer"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -125.0
-offset_top = -123.0
-offset_right = -69.0
-offset_bottom = -107.0
+offset_right = 56.0
+offset_bottom = 16.0
 
-[node name="Health" type="HBoxContainer" parent="Camera2D/UI"]
+[node name="Health" type="HBoxContainer" parent="Camera2D/UILayer/UI"]
 layout_mode = 0
 offset_right = 56.0
 offset_bottom = 16.0
 
-[node name="health1" type="TextureRect" parent="Camera2D/UI/Health"]
+[node name="health1" type="TextureRect" parent="Camera2D/UILayer/UI/Health"]
 layout_mode = 2
 texture = ExtResource("15_w8hqe")
 
-[node name="health2" type="TextureRect" parent="Camera2D/UI/Health"]
+[node name="health2" type="TextureRect" parent="Camera2D/UILayer/UI/Health"]
 layout_mode = 2
 texture = ExtResource("15_w8hqe")
 
-[node name="health3" type="TextureRect" parent="Camera2D/UI/Health"]
+[node name="health3" type="TextureRect" parent="Camera2D/UILayer/UI/Health"]
 layout_mode = 2
 texture = ExtResource("15_w8hqe")
 
-[node name="GameTime" type="Control" parent="Camera2D/UI"]
+[node name="GameTime" type="Control" parent="Camera2D/UILayer/UI"]
 anchors_preset = 0
 offset_left = 24.0
 offset_top = -3.0
@@ -164,7 +164,7 @@ offset_right = 64.0
 offset_bottom = 37.0
 scale = Vector2(0.1, 0.1)
 
-[node name="minutes2" type="Label" parent="Camera2D/UI/GameTime"]
+[node name="minutes2" type="Label" parent="Camera2D/UILayer/UI/GameTime"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 650.0
@@ -176,7 +176,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 150
 text = "00:"
 
-[node name="seconds2" type="Label" parent="Camera2D/UI/GameTime"]
+[node name="seconds2" type="Label" parent="Camera2D/UILayer/UI/GameTime"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 880.0
@@ -188,7 +188,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 150
 text = "00:"
 
-[node name="milliseconds2" type="Label" parent="Camera2D/UI/GameTime"]
+[node name="milliseconds2" type="Label" parent="Camera2D/UILayer/UI/GameTime"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 1110.0
@@ -200,7 +200,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 150
 text = "00:"
 
-[node name="minutes" type="Label" parent="Camera2D/UI/GameTime"]
+[node name="minutes" type="Label" parent="Camera2D/UILayer/UI/GameTime"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 650.0
@@ -212,7 +212,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 150
 text = "00:"
 
-[node name="seconds" type="Label" parent="Camera2D/UI/GameTime"]
+[node name="seconds" type="Label" parent="Camera2D/UILayer/UI/GameTime"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 880.0
@@ -224,7 +224,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 150
 text = "00:"
 
-[node name="milliseconds" type="Label" parent="Camera2D/UI/GameTime"]
+[node name="milliseconds" type="Label" parent="Camera2D/UILayer/UI/GameTime"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 1110.0
@@ -412,6 +412,9 @@ texture_filter = 1
 position = Vector2(-121, 895)
 scale = Vector2(0.713889, 0.708333)
 texture = ExtResource("2_n4joq")
+
+[node name="DarkRoomModulate" type="CanvasModulate" parent="."]
+color = Color(0.521141, 0.521141, 0.521141, 1)
 
 [connection signal="gem_collected" from="SacredGemNode" to="TutorialTextContainer" method="_on_sacred_gem_node_gem_collected"]
 [connection signal="visibility_changed" from="SacredGemNode" to="TutorialTextContainer" method="_on_sacred_gem_node_visibility_changed"]
