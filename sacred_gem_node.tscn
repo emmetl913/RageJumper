@@ -6,11 +6,11 @@
 [sub_resource type="GDScript" id="GDScript_sn0o8"]
 script/source = "extends Node2D
 
+signal gem_collected
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$SacredGemSprite.visible = true
-	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,6 +22,8 @@ func _on_sacred_gem_area_body_entered(body):
 	if body.is_in_group(\"Player\"):
 		$AnimationPlayer.play(\"collect\")
 		$GrabGemSound.play()
+		gem_collected.emit()
+		
 
 
 

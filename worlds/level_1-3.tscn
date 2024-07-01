@@ -143,6 +143,11 @@ texture = ExtResource("14_y5w2g")
 layout_mode = 2
 texture = ExtResource("14_y5w2g")
 
+[node name="health3" type="TextureRect" parent="Camera2D/UI/Health"]
+visible = false
+layout_mode = 2
+texture = ExtResource("14_y5w2g")
+
 [node name="GameTime" type="Control" parent="Camera2D/UI"]
 anchors_preset = 0
 offset_left = 24.0

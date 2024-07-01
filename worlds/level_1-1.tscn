@@ -50,7 +50,6 @@ sources/0 = SubResource("TileSetAtlasSource_dhrhb")
 
 [node name="level 1-1" type="Node2D"]
 script = ExtResource("1_5br5x")
-timesave_index = null
 
 [node name="Img1100483739709739420" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -147,6 +146,11 @@ layout_mode = 2
 texture = ExtResource("15_f5x57")
 
 [node name="health2" type="TextureRect" parent="Camera2D/UI/Health"]
+layout_mode = 2
+texture = ExtResource("15_f5x57")
+
+[node name="health3" type="TextureRect" parent="Camera2D/UI/Health"]
+visible = false
 layout_mode = 2
 texture = ExtResource("15_f5x57")
 

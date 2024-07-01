@@ -16,3 +16,7 @@ func _on_start_game_pressed():
 
 func _on_control_button_pressed():
 	get_tree().change_scene_to_file("res://menus/control.tscn")
+
+
+func _on_tutorial_pressed():
+	get_tree().change_scene_to_file("res://worlds/tutorial.tscn")

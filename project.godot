@@ -39,6 +39,7 @@ folder_colors={
 
 [gui]
 
+theme/custom_font="res://assets/m5x7.ttf"
 theme/default_font_antialiasing=0
 
 [input]

@@ -5,7 +5,8 @@ var old_health : int
 var full_hearts : int
 var half_hearts : int
 var empty_hearts : int
-
+@onready var player = get_node("Player")
+var health: int
 var time: float = 0.0
 var minutes: int = 0
 var seconds: int = 0
@@ -16,7 +17,8 @@ var msec: int = 0
 func _ready():
 	print("Best min: ", Besttime.bestmin, " Best sec: ", Besttime.bestsec, " Best msec: ", Besttime.bestmsec)
 	player_has_gem = false
-	old_health = 4
+	health = player.health
+	old_health = health +1 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -60,18 +62,24 @@ func _process(delta):
 			$Camera2D/PauseMenu.visible = true
 		else:
 			$Camera2D/PauseMenu.visible = false
-	var health = $Player.health
+	health = player.health
 	if health < old_health:
 		calculate_health_display(health)
 		old_health -= 1
+		
 
 func calculate_health_display(health):
 	print(health)
-	if health <= 4:
+	if health <= 6:
 		if health % 2 != 1:
+			if health == 6:
+				$Camera2D/UI/Health/health1.texture = load("res://assets/heart.png")
+				$Camera2D/UI/Health/health2.texture = load("res://assets/heart.png")
+				$Camera2D/UI/Health/health3.texture = load("res://assets/heart.png")
 			if health == 4:
 				$Camera2D/UI/Health/health1.texture = load("res://assets/heart.png")
 				$Camera2D/UI/Health/health2.texture = load("res://assets/heart.png")
+				$Camera2D/UI/Health/health3.texture = load("res://assets/emptyheart.png")
 			if health == 2:
 				$Camera2D/UI/Health/health1.texture = load("res://assets/heart.png")
 				$Camera2D/UI/Health/health2.texture = load("res://assets/emptyheart.png")
@@ -79,6 +87,10 @@ func calculate_health_display(health):
 				$Camera2D/UI/Health/health1.texture = load("res://assets/emptyheart.png")
 				$Camera2D/UI/Health/health2.texture = load("res://assets/emptyheart.png")
 		elif health % 2 == 1:
+			if health == 5:
+				$Camera2D/UI/Health/health1.texture = load("res://assets/heart.png")
+				$Camera2D/UI/Health/health2.texture = load("res://assets/heart.png")
+				$Camera2D/UI/Health/health3.texture = load("res://assets/halfheart.png")
 			if health == 3:
 				$Camera2D/UI/Health/health2.texture = load("res://assets/halfheart.png")
 				$Camera2D/UI/Health/health1.texture = load("res://assets/heart.png")
