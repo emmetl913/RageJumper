@@ -28,7 +28,7 @@ var jumpSpeedStart = jump_speed
 var rng = RandomNumberGenerator.new()
 
 func _ready():
-	$MusicPlayer.play()
+	AudioPlayer.play_music_level()
 
 func _physics_process(delta):
 	velocity.y += gravity * delta

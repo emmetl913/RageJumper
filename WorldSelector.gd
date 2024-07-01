@@ -6,3 +6,6 @@ func _process(delta):
 
 func _on_world_1_pressed():
 	get_tree().change_scene_to_file("res://menus/temple_level_select.tscn")
+
+func _on_mainmenubutton_pressed():
+	get_tree().change_scene_to_file("res://menus/MainMenu.tscn")

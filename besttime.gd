@@ -2,9 +2,11 @@ extends Node
 
 var save_path = "user://variable.save"
 
-@export var bestmin = [0,0,0,0,0,0]
-@export var bestsec = [0,0,0,0,0,0]
-@export var bestmsec = [0,0,0,0,0,0]
+
+#index 0 is the tutorial
+@export var bestmin = [0,0,0,0,0,0,0]
+@export var bestsec = [0,0,0,0,0,0,0]
+@export var bestmsec = [0,0,0,0,0,0,0]
 
 const LEVEL_COUNT = 6
 
@@ -17,7 +19,7 @@ func _ready():
 	print("loaded data")
 func save(lvlindex :int, minutes: int, seconds:int, msec :int):
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
-	print(minutes, " sec ", seconds, "ms ", msec)
+	print("mins: ", minutes,  " sec: ", seconds, " ms: ", msec)
 	bestmin[lvlindex] = minutes
 	bestsec[lvlindex] = seconds
 	bestmsec[lvlindex] = msec
@@ -25,7 +27,6 @@ func save(lvlindex :int, minutes: int, seconds:int, msec :int):
 		file.store_var(bestmin[i])
 		file.store_var(bestsec[i])
 		file.store_var(bestmsec[i])
-		
 	file.close()
 
 func load_data():
@@ -41,7 +42,7 @@ func print_save_data():
 	if FileAccess.file_exists(save_path):
 		var file = FileAccess.open(save_path, FileAccess.READ)
 		for i in range(LEVEL_COUNT):
-			print("Level", i+1, ":", file.get_var(), "min", file.get_var(), "sec", file.get_var(), "msec")
+			print("Level", i, ":", file.get_var(), "min", file.get_var(), "sec", file.get_var(), "msec")
 		file.close()
 	else:
 		print("Save file does not exist")

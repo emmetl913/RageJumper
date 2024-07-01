@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b51w1y56388uq"]
+[gd_scene load_steps=24 format=3 uid="uid://b51w1y56388uq"]
 
 [ext_resource type="Script" path="res://player/PlayerMovement.gd" id="1_do1lc"]
 [ext_resource type="Texture2D" uid="uid://1gh1pulmghts" path="res://player/dude2.png" id="2_r485j"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://dg0ixh1pbxy1f" path="res://player/deathshader.tscn" id="7_uain0"]
 [ext_resource type="AudioStream" uid="uid://bss71v0kaqp0p" path="res://assets/sounds/slimeplop2.wav" id="9_f6xry"]
 [ext_resource type="AudioStream" uid="uid://b8b3qt52w0k46" path="res://assets/sounds/slimejump.wav" id="10_jcywi"]
-[ext_resource type="AudioStream" uid="uid://6q60kmwq7kh6" path="res://assets/sounds/SlimeThemeSlow.wav" id="12_8vms4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_30yh4"]
 size = Vector2(14.203, 22.258)
@@ -227,11 +226,6 @@ lifetime = 1.0
 speed_scale = 0.1
 collision_base_size = 4.66
 
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_8vms4")
-volume_db = -7.0
-
 [connection signal="timeout" from="HurtCooldown" to="." method="_on_hurt_cooldown_timeout"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
-[connection signal="finished" from="MusicPlayer" to="." method="_on_music_player_finished"]

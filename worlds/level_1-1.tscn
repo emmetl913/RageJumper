@@ -42,7 +42,7 @@ texture = ExtResource("4_ifjrn")
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 8, -6.125, 3.5, 6, 3.5, 6.375, 8)
-0:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(-1, -8, -2.875, 3.5, 2.875, 3.75, 0.875, -8)
+0:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(-1, -6.5, -0.9375, 3.75, 0.9375, 3.6875, 1, -6.5)
 
 [sub_resource type="TileSet" id="TileSet_denni"]
 physics_layer_0/collision_layer = 1
@@ -50,6 +50,7 @@ sources/0 = SubResource("TileSetAtlasSource_dhrhb")
 
 [node name="level 1-1" type="Node2D"]
 script = ExtResource("1_5br5x")
+timesave_index = 1
 
 [node name="Img1100483739709739420" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -83,6 +84,7 @@ position = Vector2(120, 40)
 [node name="Player" parent="." instance=ExtResource("7_ajslp")]
 process_mode = 1
 position = Vector2(171, 29)
+health = 6
 jump_scaler = 1000
 jump_max_speed = -600
 gravity = 1500
@@ -150,7 +152,6 @@ layout_mode = 2
 texture = ExtResource("15_f5x57")
 
 [node name="health3" type="TextureRect" parent="Camera2D/UI/Health"]
-visible = false
 layout_mode = 2
 texture = ExtResource("15_f5x57")
 
