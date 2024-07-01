@@ -5,7 +5,8 @@ var old_health : int
 var full_hearts : int
 var half_hearts : int
 var empty_hearts : int
-
+@onready var player = get_node("Player")
+var health: int
 var time: float = 0.0
 var minutes: int = 0
 var seconds: int = 0
@@ -16,7 +17,8 @@ var msec: int = 0
 func _ready():
 	print("Best min: ", Besttime.bestmin, " Best sec: ", Besttime.bestsec, " Best msec: ", Besttime.bestmsec)
 	player_has_gem = false
-	old_health = 4
+	health = player.health
+	old_health = health +1 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,19 +30,18 @@ func _process(delta):
 		player_has_gem = true
 		$DoorNode.has_gem = true
 		if $DoorNode.leaving == true:
-				if minutes <= Besttime.bestmin[timesave_index] or Besttime.bestmin[timesave_index] == 0:
+				if minutes <= Besttime.bestmin[timesave_index]:
 					if seconds < Besttime.bestsec[timesave_index] or Besttime.bestsec[timesave_index] == 0:
-						Besttime.bestsec[timesave_index] = seconds
 						Besttime.bestmin[timesave_index] = minutes
+						Besttime.bestsec[timesave_index] = seconds
 						Besttime.bestmsec[timesave_index] = msec
-					if seconds == Besttime.bestsec[timesave_index]:
-						if msec < Besttime.bestmsec[timesave_index] or Besttime.bestmsec[timesave_index] == 0:
-								Besttime.bestsec[timesave_index] = seconds
-								Besttime.bestmin[timesave_index] = minutes
-								Besttime.bestmsec[timesave_index] = msec
-				print("Current Run: Best min: ", minutes, " Best sec: ", seconds, " Best msec: ", msec)
-				print("New: Best min: ", Besttime.bestmin[timesave_index], " Best sec: ", Besttime.bestsec[timesave_index], " Best msec: ", Besttime.bestmsec[timesave_index])
-				Besttime.save(timesave_index, minutes, seconds, msec)
+					elif msec < Besttime.bestmsec[timesave_index]:
+							Besttime.bestmin[timesave_index] = minutes
+							Besttime.bestsec[timesave_index] = seconds
+							Besttime.bestmsec[timesave_index] = msec
+					print("Current Run: Best min: ", minutes, " Best sec: ", seconds, " Best msec: ", msec)
+					Besttime.save(timesave_index, Besttime.bestmin[timesave_index], Besttime.bestsec[timesave_index], Besttime.bestmsec[timesave_index])
+					print("New: Best min: ", Besttime.bestmin[timesave_index], " Best sec: ", Besttime.bestsec[timesave_index], " Best msec: ", Besttime.bestmsec[timesave_index])
 				get_tree().change_scene_to_file("res://menus/MainMenu.tscn")
 	
 	time += delta
@@ -60,18 +61,24 @@ func _process(delta):
 			$Camera2D/PauseMenu.visible = true
 		else:
 			$Camera2D/PauseMenu.visible = false
-	var health = $Player.health
+	health = player.health
 	if health < old_health:
 		calculate_health_display(health)
 		old_health -= 1
+		
 
 func calculate_health_display(health):
 	print(health)
-	if health <= 4:
+	if health <= 6:
 		if health % 2 != 1:
+			if health == 6:
+				$Camera2D/UI/Health/health1.texture = load("res://assets/heart.png")
+				$Camera2D/UI/Health/health2.texture = load("res://assets/heart.png")
+				$Camera2D/UI/Health/health3.texture = load("res://assets/heart.png")
 			if health == 4:
 				$Camera2D/UI/Health/health1.texture = load("res://assets/heart.png")
 				$Camera2D/UI/Health/health2.texture = load("res://assets/heart.png")
+				$Camera2D/UI/Health/health3.texture = load("res://assets/emptyheart.png")
 			if health == 2:
 				$Camera2D/UI/Health/health1.texture = load("res://assets/heart.png")
 				$Camera2D/UI/Health/health2.texture = load("res://assets/emptyheart.png")
@@ -79,6 +86,10 @@ func calculate_health_display(health):
 				$Camera2D/UI/Health/health1.texture = load("res://assets/emptyheart.png")
 				$Camera2D/UI/Health/health2.texture = load("res://assets/emptyheart.png")
 		elif health % 2 == 1:
+			if health == 5:
+				$Camera2D/UI/Health/health1.texture = load("res://assets/heart.png")
+				$Camera2D/UI/Health/health2.texture = load("res://assets/heart.png")
+				$Camera2D/UI/Health/health3.texture = load("res://assets/halfheart.png")
 			if health == 3:
 				$Camera2D/UI/Health/health2.texture = load("res://assets/halfheart.png")
 				$Camera2D/UI/Health/health1.texture = load("res://assets/heart.png")

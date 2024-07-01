@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ds82a7nwjpj1g"]
+[gd_scene load_steps=14 format=3 uid="uid://ds82a7nwjpj1g"]
 
 [ext_resource type="Script" path="res://menus/MainMenu.gd" id="1_bcu1u"]
 [ext_resource type="Texture2D" uid="uid://ducyygq6vv3ni" path="res://assets/startgamebutton.png" id="1_fo5go"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://bxgd7rgbg8uk6" path="res://assets/controlsbutton.png" id="4_k6gmq"]
 [ext_resource type="Texture2D" uid="uid://dk8iiooyy8yug" path="res://assets/controlsbuttonhover.png" id="5_fjd5o"]
 [ext_resource type="Texture2D" uid="uid://bjjcu87w0vnv0" path="res://assets/title.png" id="6_4dawo"]
+[ext_resource type="Texture2D" uid="uid://djrmga1aewu5w" path="res://assets/tutorialbutton.png" id="6_s5nal"]
+[ext_resource type="Texture2D" uid="uid://i3s3a2goyg8t" path="res://assets/tutorialbuttonhover.png" id="7_oxn0l"]
 
 [sub_resource type="Gradient" id="Gradient_syuc7"]
 offsets = PackedFloat32Array(0.980519, 1)
@@ -15,6 +17,8 @@ offsets = PackedFloat32Array(0.980519, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_mb7io"]
 gradient = SubResource("Gradient_syuc7")
 fill_from = Vector2(1, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_48215"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -50,6 +54,12 @@ texture_normal = ExtResource("4_k6gmq")
 texture_hover = ExtResource("5_fjd5o")
 stretch_mode = 3
 
+[node name="Tutorial" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_s5nal")
+texture_hover = ExtResource("7_oxn0l")
+stretch_mode = 3
+
 [node name="QuitButton" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("2_i5b78")
@@ -65,6 +75,18 @@ offset_bottom = 80.0
 texture = ExtResource("6_4dawo")
 stretch_mode = 3
 
+[node name="Currentbesttime" type="Label" parent="."]
+layout_mode = 0
+offset_top = 224.0
+offset_right = 256.0
+offset_bottom = 256.0
+label_settings = SubResource("LabelSettings_48215")
+vertical_alignment = 2
+autowrap_mode = 3
+
 [connection signal="pressed" from="VBoxContainer/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="VBoxContainer/ControlButton" to="." method="_on_control_button_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Tutorial" to="." method="_on_tutorial_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/Tutorial" to="." method="_on_tutorial_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

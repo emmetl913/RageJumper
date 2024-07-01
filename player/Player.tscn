@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://dg0ixh1pbxy1f" path="res://player/deathshader.tscn" id="7_uain0"]
 [ext_resource type="AudioStream" uid="uid://bss71v0kaqp0p" path="res://assets/sounds/slimeplop2.wav" id="9_f6xry"]
 [ext_resource type="AudioStream" uid="uid://b8b3qt52w0k46" path="res://assets/sounds/slimejump.wav" id="10_jcywi"]
-[ext_resource type="AudioStream" uid="uid://6q60kmwq7kh6" path="res://assets/sounds/SlimeThemeSlow.wav" id="12_8vms4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_30yh4"]
 size = Vector2(14.203, 22.258)
@@ -195,9 +194,11 @@ wait_time = 0.75
 
 [node name="hurt" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_jsc37")
+volume_db = -5.006
 
 [node name="death" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_0iuef")
+volume_db = -5.0
 
 [node name="jumpLand" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_f6xry")
@@ -236,10 +237,6 @@ lifetime = 1.0
 speed_scale = 0.1
 collision_base_size = 4.66
 
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_8vms4")
-volume_db = -15.016
-
 [node name="PointLight2D" type="PointLight2D" parent="."]
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_45tj7")
@@ -247,4 +244,3 @@ texture = SubResource("GradientTexture2D_45tj7")
 [connection signal="timeout" from="HurtCooldown" to="." method="_on_hurt_cooldown_timeout"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
-[connection signal="finished" from="MusicPlayer" to="." method="_on_music_player_finished"]

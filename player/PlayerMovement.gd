@@ -28,7 +28,7 @@ var jumpSpeedStart = jump_speed
 var rng = RandomNumberGenerator.new()
 
 func _ready():
-	$MusicPlayer.play()
+	AudioPlayer.play_music_level()
 
 func _physics_process(delta):
 	velocity.y += gravity * delta
@@ -114,10 +114,10 @@ func _physics_process(delta):
 	if velocity.y > 0:
 		speedOnGroundImpact = velocity.y
 	if is_on_floor() and can_play_land_sound:
-		print(speedOnGroundImpact)
+		#print(speedOnGroundImpact)
 		if speedOnGroundImpact != 0:
 			$jumpLand.pitch_scale = -.37 + 1000/speedOnGroundImpact
-			print($jumpLand.pitch_scale)
+			#print($jumpLand.pitch_scale)
 		if $jumpLand.pitch_scale <.85:
 			$jumpLand.pitch_scale = .85
 		$jumpLand.play(.52)

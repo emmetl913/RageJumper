@@ -133,6 +133,23 @@ label_settings = SubResource("LabelSettings_3yxor")
 vertical_alignment = 2
 autowrap_mode = 3
 
+[node name="BackButton" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 36.0
+
+[node name="back_button" type="TextureButton" parent="BackButton"]
+layout_mode = 2
+texture_normal = ExtResource("1_n52kp")
+texture_hover = ExtResource("2_crh4o")
+
+[node name="Label" type="Label" parent="BackButton"]
+layout_mode = 2
+text = "<-"
+horizontal_alignment = 1
+
 [connection signal="mouse_entered" from="GridContainer/Button 1-1/button_one" to="." method="_on_button_one_mouse_entered"]
 [connection signal="pressed" from="GridContainer/Button 1-1/button_one" to="." method="_on_button_one_pressed"]
 [connection signal="mouse_entered" from="GridContainer/Button 1-2/button_two" to="." method="_on_button_two_mouse_entered"]
@@ -142,3 +159,4 @@ autowrap_mode = 3
 [connection signal="pressed" from="GridContainer/Button 1-4/button_four" to="." method="_on_button_four_pressed"]
 [connection signal="pressed" from="GridContainer/Button 1-5/button_five" to="." method="_on_button_five_pressed"]
 [connection signal="pressed" from="GridContainer/Button 1-6/button_six" to="." method="_on_button_six_pressed"]
+[connection signal="button_down" from="BackButton/back_button" to="." method="_on_back_button_button_down"]
