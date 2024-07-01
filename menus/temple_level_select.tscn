@@ -134,6 +134,7 @@ vertical_alignment = 2
 autowrap_mode = 3
 
 [node name="BackButton" type="PanelContainer" parent="."]
+layout_mode = 0
 offset_left = 4.0
 offset_top = 4.0
 offset_right = 36.0

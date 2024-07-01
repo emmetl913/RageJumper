@@ -380,6 +380,18 @@ scale = Vector2(2, 2)
 text = "Enjoy the journey and stay strong!
 "
 
+[node name="Label13" type="Label" parent="TutorialTextContainer"]
+visible = false
+texture_filter = 1
+offset_left = 54.902
+offset_top = 570.588
+offset_right = 243.902
+offset_bottom = 620.588
+scale = Vector2(2, 2)
+text = "By the way, you can still move just
+fine when charging a jump!"
+horizontal_alignment = 1
+
 [node name="Img1100483739709739423" type="Sprite2D" parent="."]
 z_index = -50
 texture_filter = 1

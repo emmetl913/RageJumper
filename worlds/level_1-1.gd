@@ -31,14 +31,17 @@ func _process(delta):
 		$DoorNode.has_gem = true
 		if $DoorNode.leaving == true:
 				if minutes <= Besttime.bestmin[timesave_index]:
-					Besttime.bestmin[timesave_index] = minutes
-					if seconds <= Besttime.bestsec[timesave_index]:
+					if seconds < Besttime.bestsec[timesave_index] or Besttime.bestsec[timesave_index] == 0:
+						Besttime.bestmin[timesave_index] = minutes
 						Besttime.bestsec[timesave_index] = seconds
-						if msec <= Besttime.bestmsec[timesave_index]:
-								Besttime.bestmsec[timesave_index] = msec
-				print("Current Run: Best min: ", minutes, " Best sec: ", seconds, " Best msec: ", msec)
-				Besttime.save(timesave_index, Besttime.bestmin[timesave_index], Besttime.bestsec[timesave_index], Besttime.bestmsec[timesave_index])
-				print("New: Best min: ", Besttime.bestmin[timesave_index], " Best sec: ", Besttime.bestsec[timesave_index], " Best msec: ", Besttime.bestmsec[timesave_index])
+						Besttime.bestmsec[timesave_index] = msec
+					elif msec < Besttime.bestmsec[timesave_index]:
+							Besttime.bestmin[timesave_index] = minutes
+							Besttime.bestsec[timesave_index] = seconds
+							Besttime.bestmsec[timesave_index] = msec
+					print("Current Run: Best min: ", minutes, " Best sec: ", seconds, " Best msec: ", msec)
+					Besttime.save(timesave_index, Besttime.bestmin[timesave_index], Besttime.bestsec[timesave_index], Besttime.bestmsec[timesave_index])
+					print("New: Best min: ", Besttime.bestmin[timesave_index], " Best sec: ", Besttime.bestsec[timesave_index], " Best msec: ", Besttime.bestmsec[timesave_index])
 				get_tree().change_scene_to_file("res://menus/MainMenu.tscn")
 	
 	time += delta

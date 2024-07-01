@@ -12,6 +12,7 @@ func _on_sacred_gem_node_gem_collected():
 	$Label10.visible = true
 	$Label11.visible = true
 	$Label12.visible = true
+	$Label13.visible = true
 	
 	$Label.visible = false
 	$Label2.visible = false
