@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b51w1y56388uq"]
+[gd_scene load_steps=27 format=3 uid="uid://b51w1y56388uq"]
 
 [ext_resource type="Script" path="res://player/PlayerMovement.gd" id="1_do1lc"]
 [ext_resource type="Texture2D" uid="uid://1gh1pulmghts" path="res://player/dude2.png" id="2_r485j"]
@@ -135,6 +135,17 @@ collision_mode = 1
 collision_friction = 0.2
 collision_bounce = 0.35
 
+[sub_resource type="Gradient" id="Gradient_0egue"]
+offsets = PackedFloat32Array(0.440273, 0.716724)
+colors = PackedColorArray(0.439049, 0.439049, 0.439049, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_45tj7"]
+gradient = SubResource("Gradient_0egue")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.487179, 0.465812)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(0.98374, 0.985765)
 script = ExtResource("1_do1lc")
@@ -228,6 +239,10 @@ collision_base_size = 4.66
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_8vms4")
 volume_db = -15.016
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_45tj7")
 
 [connection signal="timeout" from="HurtCooldown" to="." method="_on_hurt_cooldown_timeout"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
