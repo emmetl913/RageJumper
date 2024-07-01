@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bu4ky5npwa88u"]
+[gd_scene load_steps=7 format=3 uid="uid://bu4ky5npwa88u"]
 
 [ext_resource type="Texture2D" uid="uid://bramb66sa005b" path="res://assets/sacred_gem.png" id="1_umtri"]
+[ext_resource type="AudioStream" uid="uid://i80rh0e5y48u" path="res://assets/sounds/grabGem.wav" id="2_d5kob"]
 
 [sub_resource type="GDScript" id="GDScript_sn0o8"]
 script/source = "extends Node2D
@@ -19,11 +20,74 @@ func _process(delta):
 
 func _on_sacred_gem_area_body_entered(body):
 	if body.is_in_group(\"Player\"):
+		$AnimationPlayer.play(\"collect\")
+		$GrabGemSound.play()
+
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == \"collect\":
 		$SacredGemSprite.visible = false
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1dq5o"]
 size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_byoel"]
+resource_name = "collect"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SacredGemSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(-1, 1), Vector2(1, 1), Vector2(2, 2), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SacredGemSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -30), Vector2(0, -25)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SacredGemSprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SacredGemSprite:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.6, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ikomd"]
+_data = {
+"collect": SubResource("Animation_byoel")
+}
 
 [node name="SacredGemNode" type="Node2D"]
 script = SubResource("GDScript_sn0o8")
@@ -37,4 +101,14 @@ texture = ExtResource("1_umtri")
 [node name="SacredGemCollision" type="CollisionShape2D" parent="SacredGemArea"]
 shape = SubResource("RectangleShape2D_1dq5o")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ikomd")
+}
+
+[node name="GrabGemSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_d5kob")
+volume_db = -18.47
+
 [connection signal="body_entered" from="SacredGemArea" to="." method="_on_sacred_gem_area_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

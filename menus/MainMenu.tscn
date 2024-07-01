@@ -9,11 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://dk8iiooyy8yug" path="res://assets/controlsbuttonhover.png" id="5_fjd5o"]
 [ext_resource type="Texture2D" uid="uid://bjjcu87w0vnv0" path="res://assets/title.png" id="6_4dawo"]
 
-[sub_resource type="Gradient" id="Gradient_kyoey"]
+[sub_resource type="Gradient" id="Gradient_syuc7"]
 offsets = PackedFloat32Array(0.980519, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_mb7io"]
-gradient = SubResource("Gradient_kyoey")
+gradient = SubResource("Gradient_syuc7")
 fill_from = Vector2(1, 0)
 
 [node name="MainMenu" type="Control"]
@@ -64,46 +64,6 @@ offset_right = 224.0
 offset_bottom = 80.0
 texture = ExtResource("6_4dawo")
 stretch_mode = 3
-
-[node name="Best Time" type="Label" parent="."]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 236.0
-offset_right = 10578.0
-offset_bottom = 2960.0
-scale = Vector2(0.01, 0.01)
-theme_override_font_sizes/font_size = 1500
-text = "Best Time: "
-
-[node name="min" type="Label" parent="."]
-layout_mode = 0
-offset_left = 86.0
-offset_top = 236.0
-offset_right = 10662.0
-offset_bottom = 2960.0
-scale = Vector2(0.01, 0.01)
-theme_override_font_sizes/font_size = 1500
-text = "00:"
-
-[node name="sec" type="Label" parent="."]
-layout_mode = 0
-offset_left = 108.0
-offset_top = 236.0
-offset_right = 10684.0
-offset_bottom = 2960.0
-scale = Vector2(0.01, 0.01)
-theme_override_font_sizes/font_size = 1500
-text = "00:"
-
-[node name="msec" type="Label" parent="."]
-layout_mode = 0
-offset_left = 130.0
-offset_top = 236.0
-offset_right = 10706.0
-offset_bottom = 2960.0
-scale = Vector2(0.01, 0.01)
-theme_override_font_sizes/font_size = 1500
-text = "00"
 
 [connection signal="pressed" from="VBoxContainer/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="VBoxContainer/ControlButton" to="." method="_on_control_button_pressed"]

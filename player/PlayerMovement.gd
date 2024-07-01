@@ -1,14 +1,18 @@
 extends CharacterBody2D
 
-var can_recieve : bool = true
+var can_restart_level = false
+var can_recieve_dmg : bool = true
 var coyote_time = 0.1
 var can_jump = false
 
 var can_animate_enter_air = false
 var can_animate_charge_jump = false
 var can_animate_land_jump = false
+var can_animate_run = false
 
-@export var health = 6
+var can_play_land_sound = true
+
+@export var health = 4
 @export var speed = 300
 @export var jump_speed = -200
 @export var jump_scaler = 500
@@ -17,9 +21,14 @@ var can_animate_land_jump = false
 @export_range(0.0, 1.0) var friction = 0.1
 @export_range(0.0 , 1.0) var acceleration = 0.25
 @export var air_rotation_speed= 30
-
+var speedOnGroundImpact = 0.0
 @onready var jumpBar = $BackgroundChargeBar/JumpHeightIndicator
 var jumpSpeedStart = jump_speed
+
+var rng = RandomNumberGenerator.new()
+
+func _ready():
+	$MusicPlayer.play()
 
 func _physics_process(delta):
 	velocity.y += gravity * delta
@@ -29,18 +38,32 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, dir * speed, acceleration) 
 	else:
 		velocity.x = lerp(velocity.x, 0.0, friction)
-	if velocity.x != 0 and is_on_floor():
+	
+	if $AnimationPlayer.current_animation == "onJump":
+		can_animate_run = false
+	
+	if velocity.x != 0 and is_on_floor() and can_animate_run:
 		$AnimationPlayer.play("onRun")
+		
+	if $AnimationPlayer.current_animation == "onRun":
+		can_animate_run = false
+		
 	if velocity.x < 0:
 		$Sprite2D.flip_h = false
 	if velocity.x > 0:
 		$Sprite2D.flip_h = true
 	move_and_slide()
 	
+	if $AnimationPlayer.current_animation == "onRun":
+		#$runparticles.emitting = true
+		pass
+	else:
+		$runparticles.emitting = false
 	
 	#rotate player when in air based on x velocity
 	if can_jump == false and !is_on_floor():
 		#then we are in air
+		can_play_land_sound = true
 		$Sprite2D.rotation_degrees = lerpf($Sprite2D.rotation_degrees, velocity.normalized().x * air_rotation_speed, .3)
 	#Jumping code!
 	if velocity.y > 0:
@@ -48,6 +71,7 @@ func _physics_process(delta):
 	if is_on_floor() and can_jump == false:
 		can_jump = true
 		can_animate_charge_jump = true
+		can_animate_run = true
 		$Sprite2D.rotation_degrees = 0
 		if can_animate_land_jump:
 			$AnimationPlayer.play("onLand")
@@ -60,6 +84,7 @@ func _physics_process(delta):
 		scaleJumpBar()
 		if can_animate_charge_jump:
 			$AnimationPlayer.play("onJump")
+			#$jumpparticles.emitting = true
 			can_animate_charge_jump = false
 	
 		
@@ -67,22 +92,43 @@ func _physics_process(delta):
 		if jump_speed < jump_max_speed:
 			jump_speed = jump_max_speed
 		#ACTUALLY JUMP
+		$jumpReleased.play()
 		velocity.y = jump_speed
 		jump_speed = -200
 		resetJumpBar()
 		can_animate_land_jump = true
 		can_animate_enter_air = true
+		can_animate_run = false
 		$AnimationPlayer.stop(true)
 		
 	if can_animate_enter_air:
 		$AnimationPlayer.play("inAir")	
+		$jumpparticles.emitting = false
 		can_animate_enter_air = false
-		
+		can_animate_run = false
 	if !can_jump:
 		resetJumpBar()
 	
+	
+	
+	if velocity.y > 0:
+		speedOnGroundImpact = velocity.y
+	if is_on_floor() and can_play_land_sound:
+		print(speedOnGroundImpact)
+		if speedOnGroundImpact != 0:
+			$jumpLand.pitch_scale = -.37 + 1000/speedOnGroundImpact
+			print($jumpLand.pitch_scale)
+		if $jumpLand.pitch_scale <.85:
+			$jumpLand.pitch_scale = .85
+		$jumpLand.play(.52)
+		speedOnGroundImpact= 0
+		can_play_land_sound = false
+	
 	detect_collision()
-
+	
+	if(Input.is_action_just_pressed("restart")):
+		get_tree().reload_current_scene()
+	
 func delete_duplicate_collisions(collisions: Array):
 	var unique: Array = []
 	for item in collisions:
@@ -97,8 +143,8 @@ func detect_collision():
 		collisionList.append(get_slide_collision(i).get_collider().name)
 	var collisionListNames = delete_duplicate_collisions(collisionList)
 	for i in collisionListNames:
-		if i.contains("DamageColliders") and can_recieve:
-			can_recieve = false
+		if i.contains("DamageColliders") and can_recieve_dmg:
+			can_recieve_dmg = false
 			$HurtCooldown.start()
 			print("OW")
 			health -= 1
@@ -116,7 +162,7 @@ func detect_collision():
 func _on_death_timer_timeout():
 	get_tree().change_scene_to_file("res://menus/MainMenu.tscn")
 func _on_hurt_cooldown_timeout():
-	can_recieve = true
+	can_recieve_dmg = true
 
 func scaleJumpBar():
 	$BackgroundChargeBar.visible = false
@@ -131,3 +177,8 @@ func resetJumpBar():
 
 func _on_coyote_timer_timeout():
 	can_jump = false
+
+
+
+func _on_music_player_finished():
+	$MusicPlayer.play()
