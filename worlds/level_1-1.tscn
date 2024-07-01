@@ -73,7 +73,7 @@ layer_2/tile_data = PackedInt32Array()
 z_index = 3
 tile_set = SubResource("TileSet_denni")
 format = 2
-layer_0/tile_data = PackedInt32Array(1441793, 0, 0, 1441794, 0, 0, 1703943, 0, 0, 1703944, 0, 0, 1966084, 0, 0, 1966090, 0, 0, 3276813, 0, 0, 4063233, 0, 0, 4063234, 0, 0, 4849676, 0, 0, 4849677, 0, 0, 4849678, 0, 0, 5111816, 0, 0, 5111815, 0, 0, 5111814, 0, 0)
+layer_0/tile_data = PackedInt32Array(1441793, 0, 0, 1441794, 0, 0, 1703943, 0, 0, 1966084, 0, 0, 1966090, 0, 0, 3276813, 0, 0, 4063233, 0, 0, 4063234, 0, 0, 4849676, 0, 0, 4849677, 0, 0, 4849678, 0, 0, 5111816, 0, 0, 5111815, 0, 0, 5111814, 0, 0)
 
 [node name="SacredGemNode" parent="." instance=ExtResource("5_t6bdd")]
 position = Vector2(56, 1255)

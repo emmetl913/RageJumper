@@ -1,6 +1,6 @@
 extends Node2D
 
-var player_has_gem : bool
+var player_gem_count = 0
 var old_health : int
 var full_hearts : int
 var half_hearts : int
@@ -12,11 +12,13 @@ var minutes: int = 0
 var seconds: int = 0
 var msec: int = 0 
 
+@export var number_of_gems_in_level = 1
+
 @export var timesave_index: int
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("Best min: ", Besttime.bestmin, " Best sec: ", Besttime.bestsec, " Best msec: ", Besttime.bestmsec)
-	player_has_gem = false
+	player_gem_count = 0
 	health = player.health
 	old_health = health +1 
 
@@ -26,23 +28,21 @@ func _ready():
 func _process(delta):
 	#Camera controls
 	$Camera2D.position.y = 128 + (floor($Player.position.y / 256) * 256)
-	if $SacredGemNode/SacredGemSprite.visible == false:
-		player_has_gem = true
-		$DoorNode.has_gem = true
-		if $DoorNode.leaving == true:
-				if minutes <= Besttime.bestmin[timesave_index]:
-					if seconds < Besttime.bestsec[timesave_index] or Besttime.bestsec[timesave_index] == 0:
-						Besttime.bestmin[timesave_index] = minutes
-						Besttime.bestsec[timesave_index] = seconds
-						Besttime.bestmsec[timesave_index] = msec
-					elif msec < Besttime.bestmsec[timesave_index]:
-							Besttime.bestmin[timesave_index] = minutes
-							Besttime.bestsec[timesave_index] = seconds
-							Besttime.bestmsec[timesave_index] = msec
-					print("Current Run: Best min: ", minutes, " Best sec: ", seconds, " Best msec: ", msec)
-					Besttime.save(timesave_index, Besttime.bestmin[timesave_index], Besttime.bestsec[timesave_index], Besttime.bestmsec[timesave_index])
-					print("New: Best min: ", Besttime.bestmin[timesave_index], " Best sec: ", Besttime.bestsec[timesave_index], " Best msec: ", Besttime.bestmsec[timesave_index])
-				get_tree().change_scene_to_file("res://menus/MainMenu.tscn")
+	$Camera2D.position.x = 128 + (floor($Player.position.x / 256) * 256)
+	if player_gem_count == number_of_gems_in_level and $DoorNode.leaving:
+		if minutes <= Besttime.bestmin[timesave_index]:
+			if seconds < Besttime.bestsec[timesave_index] or Besttime.bestsec[timesave_index] == 0:
+				Besttime.bestmin[timesave_index] = minutes
+				Besttime.bestsec[timesave_index] = seconds
+				Besttime.bestmsec[timesave_index] = msec
+			elif msec < Besttime.bestmsec[timesave_index]:
+					Besttime.bestmin[timesave_index] = minutes
+					Besttime.bestsec[timesave_index] = seconds
+					Besttime.bestmsec[timesave_index] = msec
+			Besttime.save(timesave_index, Besttime.bestmin[timesave_index], Besttime.bestsec[timesave_index], Besttime.bestmsec[timesave_index])
+			print("New: Best min: ", Besttime.bestmin[timesave_index], " Best sec: ", Besttime.bestsec[timesave_index], " Best msec: ", Besttime.bestmsec[timesave_index])
+		print("Current Run: Best min: ", minutes, " Best sec: ", seconds, " Best msec: ", msec)
+		get_tree().change_scene_to_file("res://menus/MainMenu.tscn")
 	
 	time += delta
 	msec = fmod(time, 1) *100
