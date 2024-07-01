@@ -39,6 +39,9 @@ func _on_button_three_pressed():
 	else: 
 		$levelerror.text = "Sorry, level 1-3 has not been implemented yet"
 
+func _on_button_three_mouse_entered():
+	$Currentbesttime.text = "1-3 Best Time: %02d:" % Besttime.bestmin[2] + "%02d:" % Besttime.bestsec[2] + "%02d" % Besttime.bestmsec[2]
+
 
 func _on_button_four_pressed():
 	if ResourceLoader.exists("res://worlds/level_1-4.tscn"):
@@ -59,7 +62,6 @@ func _on_button_six_pressed():
 		get_tree().change_scene_to_file("res://worlds/level_1-6.tscn")
 	else: 
 		$levelerror.text = "Sorry, level 1-6 has not been implemented yet"
-
 
 
 

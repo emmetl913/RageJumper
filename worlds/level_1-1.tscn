@@ -41,7 +41,8 @@ texture = ExtResource("4_ifjrn")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, 6.375, -6.0625, 6, -5.4375, 4, -3.9375, 3.625, -4.1875, 0.875, -2.1875, -0.25, -0.0625, -7, 1.5625, -0.75, 3.3125, -0.75, 3.3125, 2, 4.8125, 2.125, 4.5625, 5, 6.4375, 5.25, 8, 8)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 8, -6.125, 3.5, 6, 3.5, 6.375, 8)
+0:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(-1, -8, -2.875, 3.5, 2.875, 3.75, 0.875, -8)
 
 [sub_resource type="TileSet" id="TileSet_denni"]
 physics_layer_0/collision_layer = 1

@@ -27,6 +27,9 @@ var jumpSpeedStart = jump_speed
 
 var rng = RandomNumberGenerator.new()
 
+func _ready():
+	$MusicPlayer.play()
+
 func _physics_process(delta):
 	velocity.y += gravity * delta
 	
@@ -175,3 +178,7 @@ func resetJumpBar():
 func _on_coyote_timer_timeout():
 	can_jump = false
 
+
+
+func _on_music_player_finished():
+	$MusicPlayer.play()
