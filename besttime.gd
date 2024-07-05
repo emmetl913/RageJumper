@@ -8,6 +8,7 @@ var save_path = "user://variable.save"
 @export var bestsec = [0,0,0,0,0,0,0]
 @export var bestmsec = [0,0,0,0,0,0,0]
 
+
 const LEVEL_COUNT = 6
 
 #TODO: Make array of bestmin, bestsec, bestmsec for each level. (0th index would be level1-1, 1st = lvl1-2)

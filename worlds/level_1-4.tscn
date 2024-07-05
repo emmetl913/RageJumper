@@ -51,6 +51,7 @@ sources/0 = SubResource("TileSetAtlasSource_dhrhb")
 
 [node name="level1-4" type="Node2D"]
 script = ExtResource("1_apljq")
+number_of_gems_in_level = 2
 timesave_index = 4
 
 [node name="Img1100483739709739420" type="Sprite2D" parent="."]
@@ -253,6 +254,9 @@ texture_filter = 1
 position = Vector2(107, 384)
 scale = Vector2(0.713889, 0.708333)
 texture = ExtResource("2_l3aer")
+
+[node name="SacredGemNode2" parent="." instance=ExtResource("5_0qmy8")]
+position = Vector2(88, 152)
 
 [connection signal="pressed" from="Camera2D/PauseMenu/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Camera2D/PauseMenu/VBoxContainer/Restart" to="." method="_on_restart_pressed"]

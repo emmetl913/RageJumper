@@ -8,6 +8,7 @@ script/source = "extends Node2D
 
 signal gem_collected
 @onready var level = get_parent()
+var is_collected : bool
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$SacredGemSprite.visible = true
@@ -19,7 +20,7 @@ func _process(delta):
 
 
 func _on_sacred_gem_area_body_entered(body):
-	if body.is_in_group(\"Player\"):
+	if body.is_in_group(\"Player\") && !is_collected:
 		$AnimationPlayer.play(\"collect\")
 		$GrabGemSound.play()
 		level.player_gem_count += 1
@@ -27,6 +28,7 @@ func _on_sacred_gem_area_body_entered(body):
 		#this is for changing text in the tutorial
 		#or any special effects after the FIRST gem has been picked up
 		gem_collected.emit()
+		is_collected = true
 		
 
 

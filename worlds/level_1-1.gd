@@ -29,7 +29,7 @@ func _process(delta):
 	#Camera controls
 	$Camera2D.position.y = 128 + (floor($Player.position.y / 256) * 256)
 	$Camera2D.position.x = 128 + (floor($Player.position.x / 256) * 256)
-	if player_gem_count == number_of_gems_in_level and $DoorNode.leaving:
+	if player_gem_count >= number_of_gems_in_level and $DoorNode.leaving:
 		if minutes <= Besttime.bestmin[timesave_index]:
 			if seconds < Besttime.bestsec[timesave_index] or Besttime.bestsec[timesave_index] == 0:
 				Besttime.bestmin[timesave_index] = minutes
