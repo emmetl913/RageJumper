@@ -7,7 +7,7 @@
 script/source = "extends Node2D
 
 signal gem_collected
-
+@onready var level = get_parent()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$SacredGemSprite.visible = true
@@ -22,6 +22,10 @@ func _on_sacred_gem_area_body_entered(body):
 	if body.is_in_group(\"Player\"):
 		$AnimationPlayer.play(\"collect\")
 		$GrabGemSound.play()
+		level.player_gem_count += 1
+		print(level.player_gem_count)
+		#this is for changing text in the tutorial
+		#or any special effects after the FIRST gem has been picked up
 		gem_collected.emit()
 		
 
@@ -30,6 +34,7 @@ func _on_sacred_gem_area_body_entered(body):
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == \"collect\":
 		$SacredGemSprite.visible = false
+		queue_free()
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1dq5o"]
@@ -91,7 +96,7 @@ _data = {
 "collect": SubResource("Animation_byoel")
 }
 
-[node name="SacredGemNode" type="Node2D"]
+[node name="SacredGemNode" type="Node2D" groups=["Gem"]]
 script = SubResource("GDScript_sn0o8")
 
 [node name="SacredGemSprite" type="Sprite2D" parent="."]
