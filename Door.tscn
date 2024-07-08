@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://csi2l7s3qw224"]
+[gd_scene load_steps=7 format=3 uid="uid://csi2l7s3qw224"]
 
 [ext_resource type="Texture2D" uid="uid://cngom3kxctmlq" path="res://assets/door.png" id="1_mlrew"]
 [ext_resource type="Script" path="res://Door.gd" id="1_viw4i"]
@@ -6,6 +6,15 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ucx6y"]
 size = Vector2(20, 18)
+
+[sub_resource type="Gradient" id="Gradient_s5hnp"]
+offsets = PackedFloat32Array(0, 0.733788)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kksv6"]
+gradient = SubResource("Gradient_s5hnp")
+fill = 1
+fill_from = Vector2(0.495726, 0.521368)
 
 [node name="DoorNode" type="Node2D"]
 script = ExtResource("1_viw4i")
@@ -32,6 +41,10 @@ offset_bottom = 208.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_8nodt")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_kksv6")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
