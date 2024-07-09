@@ -104,8 +104,8 @@ polygon = PackedVector2Array(-8, -5, 5, -5, 5, 8, -5, 8, -5, 5, -8, 5)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_faekg"]
 polygon = PackedVector2Array(-5, -8, -5, -5, -8, -5, -8, 5, 8, 5, 8, -5, 5, -5, 5, -8)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tj2t1"]
-polygon = PackedVector2Array(-5, -8, -5, -5, -8, -5, -8, 5, 8, 5, 8, -8)
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_uy0jx"]
+polygon = PackedVector2Array(-5, -8, -5, -5, -8, -5, -8, 4, 8, 4, 8, -8)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_rhxes"]
 polygon = PackedVector2Array(5, -8, 5, -5, 8, -5, 8, 5, -8, 5, -8, -8)
@@ -321,7 +321,7 @@ texture = ExtResource("1_hk2vh")
 41:0/0/physics_layer_0/angular_velocity = 0.0
 41:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 42:0/0 = 0
-42:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_tj2t1")
+42:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_uy0jx")
 42:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 42:0/0/physics_layer_0/angular_velocity = 0.0
 42:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bu46gfnxb8kac"]
+[gd_scene load_steps=22 format=3 uid="uid://bu46gfnxb8kac"]
 
 [ext_resource type="Script" path="res://worlds/level_1-1.gd" id="1_al5b3"]
 [ext_resource type="Texture2D" uid="uid://bbabtmvrrse0g" path="res://assets/IMG1100483739709739420.jpg" id="1_jd3nn"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bu4ky5npwa88u" path="res://sacred_gem_node.tscn" id="4_8g50j"]
 [ext_resource type="PackedScene" uid="uid://csi2l7s3qw224" path="res://Door.tscn" id="5_df2cy"]
 [ext_resource type="Script" path="res://worlds/Camera2D.gd" id="6_b4ymy"]
+[ext_resource type="PackedScene" uid="uid://b5ogeq0ydu2fo" path="res://torch.tscn" id="6_ka7mk"]
 [ext_resource type="Texture2D" uid="uid://bqalt3x1edoj5" path="res://assets/resumebutton.png" id="7_3554d"]
 [ext_resource type="Texture2D" uid="uid://c8wd83cioildd" path="res://assets/resumebuttonhover.png" id="8_4xeue"]
 [ext_resource type="Texture2D" uid="uid://cp1g3s4xidbsu" path="res://assets/restartbutton.png" id="9_3ttw1"]
@@ -75,6 +76,7 @@ layer_2/name = "Spikes"
 layer_2/tile_data = PackedInt32Array()
 
 [node name="TileMap2" type="TileMap" parent="."]
+texture_filter = 1
 tile_set = ExtResource("4_5uul4")
 format = 2
 layer_0/name = "Level"
@@ -87,6 +89,41 @@ z_index = 3
 tile_set = SubResource("TileSet_denni")
 format = 2
 layer_0/tile_data = PackedInt32Array(3276813, 0, 0, 917510, 0, 0, 917511, 0, 0, 917514, 0, 0, 720910, 0, 0, 1572867, 0, 0, 1703948, 0, 0, 2490376, 0, 0, 917506, 0, 0, 917509, 0, 0)
+
+[node name="Torches" type="Node2D" parent="."]
+
+[node name="Torch3" parent="Torches" instance=ExtResource("6_ka7mk")]
+position = Vector2(24, 356)
+
+[node name="Torch" parent="Torches" instance=ExtResource("6_ka7mk")]
+position = Vector2(184, 68)
+
+[node name="Torch2" parent="Torches" instance=ExtResource("6_ka7mk")]
+position = Vector2(64, 228)
+
+[node name="Torch4" parent="Torches" instance=ExtResource("6_ka7mk")]
+position = Vector2(231, 596)
+
+[node name="Torch5" parent="Torches" instance=ExtResource("6_ka7mk")]
+position = Vector2(120, 1108)
+
+[node name="Torch6" parent="Torches" instance=ExtResource("6_ka7mk")]
+position = Vector2(215, 1108)
+
+[node name="Torch7" parent="Torches" instance=ExtResource("6_ka7mk")]
+position = Vector2(90, 900)
+
+[node name="Torch8" parent="Torches" instance=ExtResource("6_ka7mk")]
+position = Vector2(74, 740)
+
+[node name="Torch9" parent="Torches" instance=ExtResource("6_ka7mk")]
+position = Vector2(73, 1252)
+
+[node name="Torch10" parent="Torches" instance=ExtResource("6_ka7mk")]
+position = Vector2(232, 804)
+
+[node name="Torch11" parent="Torches" instance=ExtResource("6_ka7mk")]
+position = Vector2(136, 484)
 
 [node name="SacredGemNode" parent="." instance=ExtResource("4_8g50j")]
 position = Vector2(199, 1256)
