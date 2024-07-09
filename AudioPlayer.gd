@@ -28,6 +28,7 @@ func play_music_title():
 	stream = current_song
 	volume_db = -10
 	play(prev_music_progress[0])
+	volume_db = -5
 func play_music_level():
 	if stream == level_music:
 		return
@@ -37,6 +38,7 @@ func play_music_level():
 	stream = current_song
 	volume_db = -10
 	play()
+	volume_db = -5
 
 func _on_finished():
 	stream = current_song

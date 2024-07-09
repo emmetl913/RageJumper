@@ -263,6 +263,17 @@ collision_mode = 1
 collision_friction = 0.2
 collision_bounce = 0.35
 
+[sub_resource type="Gradient" id="Gradient_7dfhd"]
+offsets = PackedFloat32Array(0.440273, 0.716724)
+colors = PackedColorArray(0.439049, 0.439049, 0.439049, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_45tj7"]
+gradient = SubResource("Gradient_7dfhd")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.487179, 0.465812)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(0.98374, 0.985765)
 script = ExtResource("1_do1lc")
@@ -355,6 +366,10 @@ process_material = SubResource("ParticleProcessMaterial_c4x34")
 lifetime = 1.0
 speed_scale = 0.1
 collision_base_size = 4.66
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_45tj7")
 
 [connection signal="timeout" from="HurtCooldown" to="." method="_on_hurt_cooldown_timeout"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bu4ky5npwa88u"]
+[gd_scene load_steps=9 format=3 uid="uid://bu4ky5npwa88u"]
 
 [ext_resource type="Texture2D" uid="uid://bramb66sa005b" path="res://assets/sacred_gem.png" id="1_umtri"]
 [ext_resource type="AudioStream" uid="uid://i80rh0e5y48u" path="res://assets/sounds/grabGem.wav" id="2_d5kob"]
@@ -96,6 +96,15 @@ _data = {
 "collect": SubResource("Animation_byoel")
 }
 
+[sub_resource type="Gradient" id="Gradient_dwgae"]
+offsets = PackedFloat32Array(0, 0.720137)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vpmgu"]
+gradient = SubResource("Gradient_dwgae")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="SacredGemNode" type="Node2D" groups=["Gem"]]
 script = SubResource("GDScript_sn0o8")
 
@@ -116,6 +125,10 @@ libraries = {
 [node name="GrabGemSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_d5kob")
 volume_db = -18.47
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_vpmgu")
 
 [connection signal="body_entered" from="SacredGemArea" to="." method="_on_sacred_gem_area_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
