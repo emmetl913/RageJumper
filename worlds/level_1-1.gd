@@ -26,6 +26,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 @warning_ignore("unused_parameter")
 func _process(delta):
+	if $Player.is_dead:
+		get_tree().paused = true
+		$Camera2D/DeadMenu.visible = true
 	#Camera controls
 	$Camera2D.position.y = 128 + (floor($Player.position.y / 256) * 256)
 	$Camera2D.position.x = 128 + (floor($Player.position.x / 256) * 256)
