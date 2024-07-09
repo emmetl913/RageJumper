@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qy3h6p5ff42d"
-path="res://.godot/imported/tilemap1.png-4a13064b3834c57e7d364588b5ab4753.ctex"
+uid="uid://c5i1iaevothak"
+path="res://.godot/imported/torch-sheet.png-344b8ac56e211ba5605174e73f42453c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilemap1.png"
-dest_files=["res://.godot/imported/tilemap1.png-4a13064b3834c57e7d364588b5ab4753.ctex"]
+source_file="res://assets/torch-sheet.png"
+dest_files=["res://.godot/imported/torch-sheet.png-344b8ac56e211ba5605174e73f42453c.ctex"]
 
 [params]
 

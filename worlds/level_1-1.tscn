@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://dqj5idw6k3krd"]
+[gd_scene load_steps=55 format=3 uid="uid://dqj5idw6k3krd"]
 
 [ext_resource type="Script" path="res://worlds/level_1-1.gd" id="1_5br5x"]
 [ext_resource type="Texture2D" uid="uid://bbabtmvrrse0g" path="res://assets/IMG1100483739709739420.jpg" id="2_gktkt"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bu4ky5npwa88u" path="res://sacred_gem_node.tscn" id="5_t6bdd"]
 [ext_resource type="PackedScene" uid="uid://csi2l7s3qw224" path="res://Door.tscn" id="6_s4p5m"]
 [ext_resource type="PackedScene" uid="uid://b51w1y56388uq" path="res://player/Player.tscn" id="7_ajslp"]
+[ext_resource type="PackedScene" uid="uid://b5ogeq0ydu2fo" path="res://torch.tscn" id="7_jvd6a"]
 [ext_resource type="Script" path="res://worlds/Camera2D.gd" id="8_yurp7"]
 [ext_resource type="Texture2D" uid="uid://bqalt3x1edoj5" path="res://assets/resumebutton.png" id="9_8x5w4"]
 [ext_resource type="Texture2D" uid="uid://c8wd83cioildd" path="res://assets/resumebuttonhover.png" id="10_qm75e"]
@@ -352,6 +353,41 @@ position = Vector2(56, 1255)
 
 [node name="DoorNode" parent="." instance=ExtResource("6_s4p5m")]
 position = Vector2(120, 40)
+
+[node name="Torches" type="Node2D" parent="."]
+
+[node name="Torch" parent="Torches" instance=ExtResource("7_jvd6a")]
+position = Vector2(157, 228)
+
+[node name="Torch11" parent="Torches" instance=ExtResource("7_jvd6a")]
+position = Vector2(54, 164)
+
+[node name="Torch2" parent="Torches" instance=ExtResource("7_jvd6a")]
+position = Vector2(134, 420)
+
+[node name="Torch3" parent="Torches" instance=ExtResource("7_jvd6a")]
+position = Vector2(105, 420)
+
+[node name="Torch4" parent="Torches" instance=ExtResource("7_jvd6a")]
+position = Vector2(53, 596)
+
+[node name="Torch5" parent="Torches" instance=ExtResource("7_jvd6a")]
+position = Vector2(106, 596)
+
+[node name="Torch6" parent="Torches" instance=ExtResource("7_jvd6a")]
+position = Vector2(180, 804)
+
+[node name="Torch7" parent="Torches" instance=ExtResource("7_jvd6a")]
+position = Vector2(103, 1156)
+
+[node name="Torch8" parent="Torches" instance=ExtResource("7_jvd6a")]
+position = Vector2(186, 1076)
+
+[node name="Torch9" parent="Torches" instance=ExtResource("7_jvd6a")]
+position = Vector2(103, 932)
+
+[node name="Torch10" parent="Torches" instance=ExtResource("7_jvd6a")]
+position = Vector2(200, 932)
 
 [node name="Player" parent="." instance=ExtResource("7_ajslp")]
 process_mode = 1
