@@ -315,6 +315,7 @@ position = Vector2(26, -25)
 [node name="WinTimer" type="Timer" parent="."]
 process_mode = 3
 wait_time = 3.0
+
 [node name="DarkRoomModulate" type="CanvasModulate" parent="."]
 color = Color(0.521141, 0.521141, 0.521141, 1)
 
