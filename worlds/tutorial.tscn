@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://duy616po2ql7k"]
+[gd_scene load_steps=24 format=3 uid="uid://duy616po2ql7k"]
 
 [ext_resource type="Script" path="res://worlds/level_1-1.gd" id="1_4qxn6"]
 [ext_resource type="Texture2D" uid="uid://bbabtmvrrse0g" path="res://assets/IMG1100483739709739420.jpg" id="2_n4joq"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://d2x7yfysppnob" path="res://assets/heart.png" id="15_w8hqe"]
 [ext_resource type="FontFile" uid="uid://cxxdqldhm3v6r" path="res://assets/m5x7.ttf" id="16_78qhi"]
 [ext_resource type="Script" path="res://worlds/TutorialTextContainer.gd" id="16_iab1u"]
+[ext_resource type="PackedScene" uid="uid://b5ogeq0ydu2fo" path="res://torch.tscn" id="19_kx0ll"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47sut"]
 texture = ExtResource("3_yfn4v")
@@ -214,6 +215,38 @@ layer_0/tile_data = PackedInt32Array(2293768, 0, 0, 2293764, 0, 0, 2621449, 0, 0
 
 [node name="SacredGemNode" parent="." instance=ExtResource("5_vkolr")]
 position = Vector2(104, 1256)
+
+[node name="Torches" type="Node2D" parent="."]
+
+[node name="Torch" parent="Torches" instance=ExtResource("19_kx0ll")]
+position = Vector2(84, 116)
+
+[node name="Torch2" parent="Torches" instance=ExtResource("19_kx0ll")]
+position = Vector2(166, 116)
+
+[node name="Torch3" parent="Torches" instance=ExtResource("19_kx0ll")]
+position = Vector2(126, 228)
+
+[node name="Torch4" parent="Torches" instance=ExtResource("19_kx0ll")]
+position = Vector2(79, 420)
+
+[node name="Torch5" parent="Torches" instance=ExtResource("19_kx0ll")]
+position = Vector2(143, 420)
+
+[node name="Torch6" parent="Torches" instance=ExtResource("19_kx0ll")]
+position = Vector2(24, 596)
+
+[node name="Torch7" parent="Torches" instance=ExtResource("19_kx0ll")]
+position = Vector2(121, 788)
+
+[node name="Torch8" parent="Torches" instance=ExtResource("19_kx0ll")]
+position = Vector2(125, 996)
+
+[node name="Torch9" parent="Torches" instance=ExtResource("19_kx0ll")]
+position = Vector2(140, 1060)
+
+[node name="Torch10" parent="Torches" instance=ExtResource("19_kx0ll")]
+position = Vector2(176, 1172)
 
 [node name="DoorNode" parent="." instance=ExtResource("6_eal3n")]
 position = Vector2(24, 24)
