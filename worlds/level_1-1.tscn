@@ -300,6 +300,7 @@ text = "00:"
 color = Color(0.521141, 0.521141, 0.521141, 1)
 
 [node name="WinTimer" type="Timer" parent="."]
+process_mode = 3
 wait_time = 3.0
 
 [connection signal="pressed" from="Camera2D/PauseMenu/VBoxContainer/Resume" to="." method="_on_resume_pressed"]

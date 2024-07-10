@@ -45,7 +45,10 @@ func _process(delta):
 			Besttime.save(timesave_index, Besttime.bestmin[timesave_index], Besttime.bestsec[timesave_index], Besttime.bestmsec[timesave_index])
 			print("New: Best min: ", Besttime.bestmin[timesave_index], " Best sec: ", Besttime.bestsec[timesave_index], " Best msec: ", Besttime.bestmsec[timesave_index])
 		print("Current Run: Best min: ", minutes, " Best sec: ", seconds, " Best msec: ", msec)
-		get_tree().change_scene_to_file("res://menus/MainMenu.tscn")
+		get_tree().paused = true
+		$WinTimer.start()
+		$Player/win.play()
+		$Player/AnimationPlayer.play("win")
 	
 	time += delta
 	msec = fmod(time, 1) *100
@@ -115,3 +118,9 @@ func _on_return_to_main_menu_pressed():
 func _on_restart_pressed():
 	get_tree().paused = false
 	get_tree().reload_current_scene()
+
+
+func _on_win_timer_timeout():
+	print("Win anim finished successfully")
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://menus/MainMenu.tscn")
