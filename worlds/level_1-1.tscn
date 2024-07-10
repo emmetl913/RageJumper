@@ -220,6 +220,36 @@ layout_mode = 2
 texture_normal = ExtResource("13_fx0do")
 texture_hover = ExtResource("14_5hujt")
 
+[node name="DeadMenu" type="Control" parent="Camera2D"]
+process_mode = 3
+visible = false
+z_index = 8
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -48.0
+offset_right = -64.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/DeadMenu"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Restart" type="TextureButton" parent="Camera2D/DeadMenu/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("11_plxpw")
+texture_hover = ExtResource("12_d2pbv")
+
+[node name="ReturnToMainMenu" type="TextureButton" parent="Camera2D/DeadMenu/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("13_fx0do")
+texture_hover = ExtResource("14_5hujt")
+
 [node name="UILayer" type="CanvasLayer" parent="Camera2D"]
 
 [node name="UI" type="Control" parent="Camera2D/UILayer"]
@@ -325,6 +355,13 @@ text = "00:"
 [node name="DarkRoomModulate" type="CanvasModulate" parent="."]
 color = Color(0.521141, 0.521141, 0.521141, 1)
 
+[node name="WinTimer" type="Timer" parent="."]
+process_mode = 3
+wait_time = 3.0
+
 [connection signal="pressed" from="Camera2D/PauseMenu/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Camera2D/PauseMenu/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Camera2D/PauseMenu/VBoxContainer/ReturnToMainMenu" to="." method="_on_return_to_main_menu_pressed"]
+[connection signal="pressed" from="Camera2D/DeadMenu/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Camera2D/DeadMenu/VBoxContainer/ReturnToMainMenu" to="." method="_on_return_to_main_menu_pressed"]
+[connection signal="timeout" from="WinTimer" to="." method="_on_win_timer_timeout"]

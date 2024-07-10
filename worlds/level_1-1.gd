@@ -21,15 +21,21 @@ func _ready():
 	player_gem_count = 0
 	health = player.health
 	old_health = health +1 
+	print("Number of gems in level: ", number_of_gems_in_level)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 @warning_ignore("unused_parameter")
 func _process(delta):
+	if $Player.is_dead:
+		get_tree().paused = true
+		$Camera2D/DeadMenu.visible = true
 	#Camera controls
 	$Camera2D.position.y = 128 + (floor($Player.position.y / 256) * 256)
 	$Camera2D.position.x = 128 + (floor($Player.position.x / 256) * 256)
-	if player_gem_count == number_of_gems_in_level and $DoorNode.leaving:
+	#print("Player gems: ", player_gem_count)
+	#print("Door Node signal: ", $DoorNode.leaving)
+	if player_gem_count >= number_of_gems_in_level and $DoorNode.leaving:
 		if minutes <= Besttime.bestmin[timesave_index]:
 			if seconds < Besttime.bestsec[timesave_index] or Besttime.bestsec[timesave_index] == 0:
 				Besttime.bestmin[timesave_index] = minutes
@@ -42,7 +48,10 @@ func _process(delta):
 			Besttime.save(timesave_index, Besttime.bestmin[timesave_index], Besttime.bestsec[timesave_index], Besttime.bestmsec[timesave_index])
 			print("New: Best min: ", Besttime.bestmin[timesave_index], " Best sec: ", Besttime.bestsec[timesave_index], " Best msec: ", Besttime.bestmsec[timesave_index])
 		print("Current Run: Best min: ", minutes, " Best sec: ", seconds, " Best msec: ", msec)
-		get_tree().change_scene_to_file("res://menus/MainMenu.tscn")
+		get_tree().paused = true
+		$WinTimer.start()
+		$Player/win.play()
+		$Player/AnimationPlayer.play("win")
 	
 	time += delta
 	msec = fmod(time, 1) *100
@@ -112,3 +121,9 @@ func _on_return_to_main_menu_pressed():
 func _on_restart_pressed():
 	get_tree().paused = false
 	get_tree().reload_current_scene()
+
+
+func _on_win_timer_timeout():
+	print("Win anim finished successfully")
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://menus/MainMenu.tscn")

@@ -23,7 +23,7 @@ func _on_sacred_gem_area_body_entered(body):
 		$AnimationPlayer.play(\"collect\")
 		$GrabGemSound.play()
 		level.player_gem_count += 1
-		print(level.player_gem_count)
+		print(\"Gem \", level.player_gem_count, \" picked up\")
 		#this is for changing text in the tutorial
 		#or any special effects after the FIRST gem has been picked up
 		gem_collected.emit()
