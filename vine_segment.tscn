@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dh168auqeq8d3"]
+
+[ext_resource type="Texture2D" uid="uid://c5e020286qyrt" path="res://assets/vine_segment.png" id="1_8vtwe"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mmhgp"]
+radius = 1.0
+height = 7.5
+
+[node name="VineSegment" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_8vtwe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_mmhgp")

@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://b5ogeq0ydu2fo"]
+
+[ext_resource type="Script" path="res://torch.gd" id="1_7jpfm"]
+[ext_resource type="Texture2D" uid="uid://c5i1iaevothak" path="res://assets/torch-sheet.png" id="1_8q4pp"]
+
+[sub_resource type="Gradient" id="Gradient_vpdbh"]
+offsets = PackedFloat32Array(0, 0.696246)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tud7b"]
+gradient = SubResource("Gradient_vpdbh")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Animation" id="Animation_v77hg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_s8iv6"]
+resource_name = "torch_idle"
+length = 0.25
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_snie1"]
+_data = {
+"RESET": SubResource("Animation_v77hg"),
+"torch_idle": SubResource("Animation_s8iv6")
+}
+
+[node name="Torch" type="Node2D"]
+script = ExtResource("1_7jpfm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_8q4pp")
+hframes = 5
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0.42, -7.355)
+color = Color(0.681399, 0.581649, 0.00943382, 1)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_tud7b")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_snie1")
+}
+speed_scale = 0.415

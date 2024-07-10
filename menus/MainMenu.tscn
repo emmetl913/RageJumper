@@ -5,17 +5,17 @@
 [ext_resource type="Texture2D" uid="uid://wfrygd5i1n2v" path="res://assets/quitbutton.png" id="2_i5b78"]
 [ext_resource type="Texture2D" uid="uid://bbko7wvi6o82j" path="res://assets/startgamebuttonhover.png" id="2_reni1"]
 [ext_resource type="Texture2D" uid="uid://5yfgbvwcp8m0" path="res://assets/quitbuttonhover.png" id="4_2h7x2"]
-[ext_resource type="Texture2D" uid="uid://bxgd7rgbg8uk6" path="res://assets/controlsbutton.png" id="4_k6gmq"]
-[ext_resource type="Texture2D" uid="uid://dk8iiooyy8yug" path="res://assets/controlsbuttonhover.png" id="5_fjd5o"]
+[ext_resource type="Texture2D" uid="uid://bbhxpkpjam4hh" path="res://assets/OptionsButton.png" id="4_o7dnk"]
+[ext_resource type="Texture2D" uid="uid://bfkukfk0bnox4" path="res://assets/OptionsButtonHover.png" id="5_qgk6f"]
 [ext_resource type="Texture2D" uid="uid://bjjcu87w0vnv0" path="res://assets/title.png" id="6_4dawo"]
 [ext_resource type="Texture2D" uid="uid://djrmga1aewu5w" path="res://assets/tutorialbutton.png" id="6_s5nal"]
 [ext_resource type="Texture2D" uid="uid://i3s3a2goyg8t" path="res://assets/tutorialbuttonhover.png" id="7_oxn0l"]
 
-[sub_resource type="Gradient" id="Gradient_syuc7"]
+[sub_resource type="Gradient" id="Gradient_js3ui"]
 offsets = PackedFloat32Array(0.980519, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_mb7io"]
-gradient = SubResource("Gradient_syuc7")
+gradient = SubResource("Gradient_js3ui")
 fill_from = Vector2(1, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_48215"]
@@ -48,10 +48,10 @@ texture_normal = ExtResource("1_fo5go")
 texture_hover = ExtResource("2_reni1")
 stretch_mode = 3
 
-[node name="ControlButton" type="TextureButton" parent="VBoxContainer"]
+[node name="OptionsButton" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("4_k6gmq")
-texture_hover = ExtResource("5_fjd5o")
+texture_normal = ExtResource("4_o7dnk")
+texture_hover = ExtResource("5_qgk6f")
 stretch_mode = 3
 
 [node name="Tutorial" type="TextureButton" parent="VBoxContainer"]
@@ -85,7 +85,7 @@ vertical_alignment = 2
 autowrap_mode = 3
 
 [connection signal="pressed" from="VBoxContainer/StartGame" to="." method="_on_start_game_pressed"]
-[connection signal="pressed" from="VBoxContainer/ControlButton" to="." method="_on_control_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="mouse_entered" from="VBoxContainer/Tutorial" to="." method="_on_tutorial_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/Tutorial" to="." method="_on_tutorial_mouse_exited"]
 [connection signal="pressed" from="VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]

@@ -19,6 +19,7 @@ config/icon="res://player/dude2.png"
 
 Besttime="*res://besttime.gd"
 AudioPlayer="*res://audio/audio_player.tscn"
+SettingsData="*res://settings_data.gd"
 
 [display]
 

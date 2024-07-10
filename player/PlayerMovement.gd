@@ -4,6 +4,7 @@ var can_restart_level = false
 var can_recieve_dmg : bool = true
 var coyote_time = 0.1
 var can_jump = false
+@onready var is_dead : bool = false
 
 var can_animate_enter_air = false
 var can_animate_charge_jump = false
@@ -160,7 +161,8 @@ func detect_collision():
 			print("on door")
 
 func _on_death_timer_timeout():
-	get_tree().change_scene_to_file("res://menus/MainMenu.tscn")
+	is_dead = true
+
 func _on_hurt_cooldown_timeout():
 	can_recieve_dmg = true
 

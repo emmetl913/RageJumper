@@ -13,11 +13,12 @@ var prev_music_progress = [0.0, 0.0]
 #1 = SlimeThemeSlow
 
 
-func play_music(music: AudioStream, volume = 0.0):
+func play_music(music: AudioStream):
 	if stream == music:
 		return
 	stream = music
-	volume_db = volume
+	#volume_db = volume
+	print("Volume: ", volume_db)
 
 func play_music_title():
 	if stream == title_music:
@@ -26,8 +27,10 @@ func play_music_title():
 	#prev_music_progress[1] = get_playback_position()
 	current_song = title_music
 	stream = current_song
-	volume_db = -10
+	#volume_db = -10
 	play(prev_music_progress[0])
+	#volume_db = -5
+	print("Volume: ", volume_db)
 func play_music_level():
 	if stream == level_music:
 		return
@@ -35,8 +38,10 @@ func play_music_level():
 	prev_music_progress[0] = get_playback_position()
 	current_song = level_music
 	stream = current_song
-	volume_db = -10
+	#volume_db = -10
 	play()
+	#volume_db = -5
+	print("Volume: ", volume_db)
 
 func _on_finished():
 	stream = current_song

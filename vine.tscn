@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://drr3q1qjo2dla"]
+
+[ext_resource type="PackedScene" uid="uid://dh168auqeq8d3" path="res://vine_segment.tscn" id="1_s0hn8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1wcv6"]
+size = Vector2(2, 2)
+
+[node name="Vine" type="Node2D"]
+
+[node name="VineTop" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VineTop"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_1wcv6")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+node_a = NodePath("../VineTop")
+node_b = NodePath("../VineSegment")
+
+[node name="VineSegment" parent="." instance=ExtResource("1_s0hn8")]
+position = Vector2(0, 4)
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="."]
+position = Vector2(0, 8)
+node_a = NodePath("../VineSegment")
+node_b = NodePath("../VineSegment2")
+
+[node name="VineSegment2" parent="." instance=ExtResource("1_s0hn8")]
+position = Vector2(0, 12)
+
+[node name="PinJoint2D3" type="PinJoint2D" parent="."]
+position = Vector2(0, 16)
+node_a = NodePath("../VineSegment2")
+node_b = NodePath("../VineSegment3")
+
+[node name="VineSegment3" parent="." instance=ExtResource("1_s0hn8")]
+position = Vector2(0, 20)
+
+[node name="PinJoint2D4" type="PinJoint2D" parent="."]
+position = Vector2(0, 25)
+node_a = NodePath("../VineSegment3")
+node_b = NodePath("../VineSegment4")
+
+[node name="VineSegment4" parent="." instance=ExtResource("1_s0hn8")]
+position = Vector2(0, 28)
