@@ -107,7 +107,6 @@ fill_from = Vector2(0.487179, 0.465812)
 script = ExtResource("1_f51um")
 
 [node name="TileMap" type="TileMap" parent="."]
-position = Vector2(-1, 1)
 tile_set = SubResource("TileSet_q6qxs")
 format = 2
 layer_0/name = "Background"
@@ -307,3 +306,9 @@ color = Color(0.521141, 0.521141, 0.521141, 1)
 [node name="WinTimer" type="Timer" parent="."]
 process_mode = 3
 wait_time = 3.0
+
+[connection signal="pressed" from="Camera2D/PauseMenu/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Camera2D/PauseMenu/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Camera2D/PauseMenu/VBoxContainer/ReturnToMainMenu" to="." method="_on_return_to_main_menu_pressed"]
+[connection signal="pressed" from="Camera2D/DeadMenu/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Camera2D/DeadMenu/VBoxContainer/ReturnToMainMenu" to="." method="_on_return_to_main_menu_pressed"]

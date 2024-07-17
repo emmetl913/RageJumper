@@ -19,7 +19,7 @@ func _on_button_one_pressed():
 		$levelerror.text = "Sorry, level 2-1 has not been implemented yet"
 
 func _on_button_one_mouse_entered():
-	$Currentbesttime.text = "2-1 Best Time: %02d:" % Besttime.bestmin[1] + "%02d:" % Besttime.bestsec[1] + "%02d" % Besttime.bestmsec[1]
+	$Currentbesttime.text = "2-1 Best Time: %02d:" % Besttime.bestmin2[0] + "%02d:" % Besttime.bestsec2[0] + "%02d" % Besttime.bestmsec2[0]
 
 func _on_button_two_pressed():
 	if ResourceLoader.exists("res://worlds/World2Levels/level_2-2.tscn"):
@@ -29,7 +29,7 @@ func _on_button_two_pressed():
 		
 func _on_button_two_mouse_entered():
 	
-	$Currentbesttime.text = "2-2 Best Time: %02d:" % Besttime.bestmin[2] + "%02d:" % Besttime.bestsec[2] + "%02d" % Besttime.bestmsec[2]
+	$Currentbesttime.text = "2-2 Best Time: %02d:" % Besttime.bestmin2[1] + "%02d:" % Besttime.bestsec2[1] + "%02d" % Besttime.bestmsec2[1]
 
 
 func _on_button_three_pressed():
@@ -39,7 +39,7 @@ func _on_button_three_pressed():
 		$levelerror.text = "Sorry, level 2-3 has not been implemented yet"
 
 func _on_button_three_mouse_entered():
-	$Currentbesttime.text = "2-3 Best Time: %02d:" % Besttime.bestmin[3] + "%02d:" % Besttime.bestsec[3] + "%02d" % Besttime.bestmsec[3]
+	$Currentbesttime.text = "2-3 Best Time: %02d:" % Besttime.bestmin2[2] + "%02d:" % Besttime.bestsec2[2] + "%02d" % Besttime.bestmsec2[2]
 
 
 func _on_button_four_pressed():
@@ -49,7 +49,7 @@ func _on_button_four_pressed():
 		$levelerror.text = "Sorry, level 2-4 has not been implemented yet"
 
 func _on_button_four_mouse_entered():
-	$Currentbesttime.text = "2-4 Best Time: %02d:" % Besttime.bestmin[4] + "%02d:" % Besttime.bestsec[4] + "%02d" % Besttime.bestmsec[4]
+	$Currentbesttime.text = "2-4 Best Time: %02d:" % Besttime.bestmin2[3] + "%02d:" % Besttime.bestsec2[3] + "%02d" % Besttime.bestmsec2[3]
 
 func _on_button_five_pressed():
 	if ResourceLoader.exists("res://worlds/World2Levels/level_2-5.tscn"):
@@ -58,7 +58,7 @@ func _on_button_five_pressed():
 		$levelerror.text = "Sorry, level 2-5 has not been implemented yet"
 
 func _on_button_five_mouse_entered():
-	$Currentbesttime.text = "2-5 Best Time: %02d:" % Besttime.bestmin[5] + "%02d:" % Besttime.bestsec[5] + "%02d" % Besttime.bestmsec[5]
+	$Currentbesttime.text = "2-5 Best Time: %02d:" % Besttime.bestmin2[4] + "%02d:" % Besttime.bestsec2[4] + "%02d" % Besttime.bestmsec[4]
 
 func _on_button_six_pressed():
 	if ResourceLoader.exists("res://worlds/World2Levels/level_2-6.tscn"):
@@ -66,6 +66,8 @@ func _on_button_six_pressed():
 	else: 
 		$levelerror.text = "Sorry, level 2-6 has not been implemented yet"
 
+func _on_button_six_mouse_entered():
+	$Currentbesttime.text = "2-6 Best Time: %02d:" % Besttime.bestmin2[5] + "%02d:" % Besttime.bestsec2[5] + "%02d" % Besttime.bestmsec[5]
 
 
 
@@ -73,6 +75,7 @@ func _on_button_six_pressed():
 
 func _on_back_button_button_down():
 	get_tree().change_scene_to_file("res://world_selector.tscn")
+
 
 
 
