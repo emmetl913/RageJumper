@@ -585,8 +585,13 @@ texture = ExtResource("2_n4joq")
 [node name="DarkRoomModulate" type="CanvasModulate" parent="."]
 color = Color(0.521141, 0.521141, 0.521141, 1)
 
+[node name="WinTimer" type="Timer" parent="."]
+process_mode = 3
+wait_time = 3.0
+
 [connection signal="gem_collected" from="SacredGemNode" to="TutorialTextContainer" method="_on_sacred_gem_node_gem_collected"]
 [connection signal="visibility_changed" from="SacredGemNode" to="TutorialTextContainer" method="_on_sacred_gem_node_visibility_changed"]
 [connection signal="pressed" from="Camera2D/PauseMenu/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Camera2D/PauseMenu/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Camera2D/PauseMenu/VBoxContainer/ReturnToMainMenu" to="." method="_on_return_to_main_menu_pressed"]
+[connection signal="timeout" from="WinTimer" to="." method="_on_win_timer_timeout"]

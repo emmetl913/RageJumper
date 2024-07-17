@@ -45,7 +45,7 @@ func _process(delta):
 					Besttime.bestmin[timesave_index] = minutes
 					Besttime.bestsec[timesave_index] = seconds
 					Besttime.bestmsec[timesave_index] = msec
-			Besttime.save(timesave_index, Besttime.bestmin[timesave_index], Besttime.bestsec[timesave_index], Besttime.bestmsec[timesave_index])
+			Besttime.save(Besttime.GLOBAL_WORLD_INDEX ,timesave_index, Besttime.bestmin[timesave_index], Besttime.bestsec[timesave_index], Besttime.bestmsec[timesave_index])
 			print("New: Best min: ", Besttime.bestmin[timesave_index], " Best sec: ", Besttime.bestsec[timesave_index], " Best msec: ", Besttime.bestmsec[timesave_index])
 		print("Current Run: Best min: ", minutes, " Best sec: ", seconds, " Best msec: ", msec)
 		get_tree().paused = true

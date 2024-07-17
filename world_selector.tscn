@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://ops8hceto2s0"]
+[gd_scene load_steps=10 format=3 uid="uid://ops8hceto2s0"]
 
 [ext_resource type="Script" path="res://WorldSelector.gd" id="1_mogi2"]
 [ext_resource type="Texture2D" uid="uid://b26vh84yx1esx" path="res://worlds/worldonetitlecard.png" id="2_8ul6q"]
 [ext_resource type="Texture2D" uid="uid://bwoprdnx4mwa4" path="res://worlds/worldonetitlecardhover.png" id="3_uwh4h"]
 [ext_resource type="Texture2D" uid="uid://b81a60262iyhb" path="res://assets/levelbutton.png" id="4_1tenb"]
+[ext_resource type="Texture2D" uid="uid://bmd2cmegoiwq3" path="res://worlds/worldtwotitlecard.png" id="4_ufo47"]
+[ext_resource type="Texture2D" uid="uid://b44pis7alexjv" path="res://worlds/worldtwotitlecardHover.png" id="5_d1kxx"]
 [ext_resource type="Texture2D" uid="uid://cmm1e8ah7lpqa" path="res://assets/levelbuttonhover.png" id="5_q4a4s"]
 
 [sub_resource type="Gradient" id="Gradient_kyoey"]
@@ -40,6 +42,11 @@ layout_mode = 2
 texture_normal = ExtResource("2_8ul6q")
 texture_hover = ExtResource("3_uwh4h")
 
+[node name="World2" type="TextureButton" parent="WorldContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_ufo47")
+texture_hover = ExtResource("5_d1kxx")
+
 [node name="MainMenuButton" type="PanelContainer" parent="."]
 layout_mode = 0
 offset_left = 4.0
@@ -60,5 +67,6 @@ text = "<-"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="WorldContainer/World1" to="." method="_on_world_1_pressed"]
+[connection signal="pressed" from="WorldContainer/World2" to="." method="_on_world_2_pressed"]
 [connection signal="button_down" from="MainMenuButton/mainmenubutton" to="." method="_on_button_one_button_down"]
 [connection signal="pressed" from="MainMenuButton/mainmenubutton" to="." method="_on_mainmenubutton_pressed"]
