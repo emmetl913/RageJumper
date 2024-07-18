@@ -56,7 +56,7 @@ func _process(delta):
 			$Player/AnimationPlayer.play("win")
 		if get_node_or_null("Blocker") != null and !is_blocked:
 			if $Blocker.position.y < 440:
-				$Blocker.position.y += 1
+				$Blocker.position.y += 0.01
 			if $Blocker.position.y >= 440:
 				is_blocked = true
 	time += delta
