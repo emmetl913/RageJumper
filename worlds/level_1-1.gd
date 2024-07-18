@@ -1,5 +1,6 @@
 extends Node2D
 
+var is_blocked : bool = false
 var player_gem_count = 0
 var old_health : int
 var full_hearts : int
@@ -35,24 +36,29 @@ func _process(delta):
 	$Camera2D.position.x = 128 + (floor($Player.position.x / 256) * 256)
 	#print("Player gems: ", player_gem_count)
 	#print("Door Node signal: ", $DoorNode.leaving)
-	if player_gem_count >= number_of_gems_in_level and $DoorNode.leaving:
-		if minutes <= Besttime.bestmin[timesave_index]:
-			if seconds < Besttime.bestsec[timesave_index] or Besttime.bestsec[timesave_index] == 0:
-				Besttime.bestmin[timesave_index] = minutes
-				Besttime.bestsec[timesave_index] = seconds
-				Besttime.bestmsec[timesave_index] = msec
-			elif msec < Besttime.bestmsec[timesave_index]:
+	if player_gem_count >= number_of_gems_in_level:
+		if $DoorNode.leaving:
+			if minutes <= Besttime.bestmin[timesave_index]:
+				if seconds < Besttime.bestsec[timesave_index] or Besttime.bestsec[timesave_index] == 0:
 					Besttime.bestmin[timesave_index] = minutes
 					Besttime.bestsec[timesave_index] = seconds
 					Besttime.bestmsec[timesave_index] = msec
-			Besttime.save(Besttime.GLOBAL_WORLD_INDEX ,timesave_index, Besttime.bestmin[timesave_index], Besttime.bestsec[timesave_index], Besttime.bestmsec[timesave_index])
-			print("New: Best min: ", Besttime.bestmin[timesave_index], " Best sec: ", Besttime.bestsec[timesave_index], " Best msec: ", Besttime.bestmsec[timesave_index])
-		print("Current Run: Best min: ", minutes, " Best sec: ", seconds, " Best msec: ", msec)
-		get_tree().paused = true
-		$WinTimer.start()
-		$Player/win.play()
-		$Player/AnimationPlayer.play("win")
-	
+				elif msec < Besttime.bestmsec[timesave_index]:
+						Besttime.bestmin[timesave_index] = minutes
+						Besttime.bestsec[timesave_index] = seconds
+						Besttime.bestmsec[timesave_index] = msec
+				Besttime.save(Besttime.GLOBAL_WORLD_INDEX ,timesave_index, Besttime.bestmin[timesave_index], Besttime.bestsec[timesave_index], Besttime.bestmsec[timesave_index])
+				print("New: Best min: ", Besttime.bestmin[timesave_index], " Best sec: ", Besttime.bestsec[timesave_index], " Best msec: ", Besttime.bestmsec[timesave_index])
+			print("Current Run: Best min: ", minutes, " Best sec: ", seconds, " Best msec: ", msec)
+			get_tree().paused = true
+			$WinTimer.start()
+			$Player/win.play()
+			$Player/AnimationPlayer.play("win")
+		if get_node_or_null("Blocker") != null and !is_blocked:
+			if $Blocker.position.y < 440:
+				$Blocker.position.y += 1
+			if $Blocker.position.y >= 440:
+				is_blocked = true
 	time += delta
 	msec = fmod(time, 1) *100
 	seconds = fmod(time, 60)
