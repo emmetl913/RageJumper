@@ -2,6 +2,8 @@ extends Control
 
 
 func _ready():
+	SilentWolf.configure_api_key("ZdZGTpsL8K4KNx1MFh2Ii89WnJxAlfB0abfYKlZs")
+	SilentWolf.configure_game_id("ragejumper")
 	get_tree().paused = false
 	SettingsData.load_data()
 	AudioPlayer.volume_db = SettingsData.volume
