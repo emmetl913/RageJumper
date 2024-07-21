@@ -154,9 +154,11 @@ func detect_collision():
 			else:
 				$Sprite2D.visible = false
 				$BackgroundChargeBar.visible = false
+				get_tree().paused = true
 				$DeathTimer.start()
 				$death.play()
 				$deathanim.emitting = true
+				get_tree().paused = false
 		if i.contains("DoorNode"):
 			print("on door")
 

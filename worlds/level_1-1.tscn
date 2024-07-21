@@ -78,12 +78,12 @@ texture = ExtResource("4_ifjrn")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_dhrhb")
 
-[sub_resource type="Gradient" id="Gradient_0egue"]
+[sub_resource type="Gradient" id="Gradient_802i1"]
 offsets = PackedFloat32Array(0.440273, 0.716724)
 colors = PackedColorArray(0.439049, 0.439049, 0.439049, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ons3j"]
-gradient = SubResource("Gradient_0egue")
+gradient = SubResource("Gradient_802i1")
 width = 128
 height = 128
 fill = 1
