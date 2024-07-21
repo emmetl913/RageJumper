@@ -272,6 +272,7 @@ layout_mode = 2
 texture = ExtResource("15_f5x57")
 
 [node name="health3" type="TextureRect" parent="Camera2D/UILayer/UI/Health"]
+visible = false
 layout_mode = 2
 texture = ExtResource("15_f5x57")
 

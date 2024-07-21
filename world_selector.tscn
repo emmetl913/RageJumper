@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://b26vh84yx1esx" path="res://worlds/worldonetitlecard.png" id="2_8ul6q"]
 [ext_resource type="Texture2D" uid="uid://bwoprdnx4mwa4" path="res://worlds/worldonetitlecardhover.png" id="3_uwh4h"]
 [ext_resource type="Texture2D" uid="uid://b81a60262iyhb" path="res://assets/levelbutton.png" id="4_1tenb"]
-[ext_resource type="Texture2D" uid="uid://bmd2cmegoiwq3" path="res://worlds/worldtwotitlecard.png" id="4_ufo47"]
-[ext_resource type="Texture2D" uid="uid://b44pis7alexjv" path="res://worlds/worldtwotitlecardHover.png" id="5_d1kxx"]
-[ext_resource type="Texture2D" uid="uid://cmm1e8ah7lpqa" path="res://assets/levelbuttonhover.png" id="5_q4a4s"]
+[ext_resource type="Texture2D" uid="uid://k5agnym885ld" path="res://worlds/worldtwotitlecard.png" id="4_sl62i"]
+[ext_resource type="Texture2D" uid="uid://cmm1e8ah7lpqa" path="res://assets/levelbuttonhover.png" id="5_8vsry"]
+[ext_resource type="Texture2D" uid="uid://cgur6en75t3kq" path="res://worlds/worldtwotitlecardHover.png" id="5_d1kxx"]
 
 [sub_resource type="Gradient" id="Gradient_kyoey"]
 offsets = PackedFloat32Array(0.980519, 1)
@@ -44,7 +44,7 @@ texture_hover = ExtResource("3_uwh4h")
 
 [node name="World2" type="TextureButton" parent="WorldContainer"]
 layout_mode = 2
-texture_normal = ExtResource("4_ufo47")
+texture_normal = ExtResource("4_sl62i")
 texture_hover = ExtResource("5_d1kxx")
 
 [node name="MainMenuButton" type="PanelContainer" parent="."]
@@ -58,7 +58,7 @@ offset_bottom = 252.0
 texture_filter = 1
 layout_mode = 2
 texture_normal = ExtResource("4_1tenb")
-texture_hover = ExtResource("5_q4a4s")
+texture_hover = ExtResource("5_8vsry")
 
 [node name="Label" type="Label" parent="MainMenuButton"]
 texture_filter = 1

@@ -69,13 +69,5 @@ func _on_button_six_pressed():
 func _on_button_six_mouse_entered():
 	$Currentbesttime.text = "2-6 Best Time: %02d:" % Besttime.bestmin2[5] + "%02d:" % Besttime.bestsec2[5] + "%02d" % Besttime.bestmsec[5]
 
-
-
-
-
 func _on_back_button_button_down():
 	get_tree().change_scene_to_file("res://world_selector.tscn")
-
-
-
-
