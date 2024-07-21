@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://doshuvfdpf6vi"]
+[gd_scene load_steps=25 format=3 uid="uid://doshuvfdpf6vi"]
 
 [ext_resource type="Texture2D" uid="uid://bvncww0wyj0qc" path="res://assets/world2tilesheet.png" id="1_dnfdv"]
 [ext_resource type="Script" path="res://worlds/level_1-1.gd" id="1_f51um"]
 [ext_resource type="PackedScene" uid="uid://b51w1y56388uq" path="res://player/Player.tscn" id="2_3oxgt"]
+[ext_resource type="PackedScene" uid="uid://b5ogeq0ydu2fo" path="res://torch.tscn" id="3_6nq76"]
 [ext_resource type="Script" path="res://worlds/Camera2D.gd" id="3_fl0y1"]
 [ext_resource type="Texture2D" uid="uid://bqalt3x1edoj5" path="res://assets/resumebutton.png" id="4_ta7iq"]
 [ext_resource type="Texture2D" uid="uid://c8wd83cioildd" path="res://assets/resumebuttonhover.png" id="5_di8qd"]
@@ -306,6 +307,71 @@ layer_1/tile_data = PackedInt32Array(983041, 65536, 2, 983042, 65536, 2, 983043,
 tile_set = SubResource("TileSet_6eeuu")
 format = 2
 layer_0/tile_data = PackedInt32Array(65557, 458752, 3, 65558, 458752, 3, 196626, 131072, 0, 196633, 131072, 0, 196636, 131072, 0, 65556, 458752, 3, 1179669, 131072, 0, 1114135, 458752, 3, 1114142, 458752, 3, 1114141, 458752, 3, 1507342, 196608, 4, 1703948, 131072, 4, 1638412, 131072, 4, 1572878, 196608, 4, 1376268, 131072, 4, 1441804, 131072, 4, 1966103, 131072, 0, 1966104, 131072, 0, 1966105, 131072, 0, 1507332, 131072, 4, 1572868, 131072, 4, 1507334, 196608, 4, 1572870, 196608, 4, 2031614, 131072, 0, 2031612, 131072, 0, 2031610, 131072, 0, 2031608, 131072, 0, 2031606, 131072, 0, 2031604, 131072, 0, 2031602, 131072, 0, 2031601, 196608, 0, 2031603, 196608, 0, 2031605, 196608, 0, 2031607, 196608, 0, 2031609, 196608, 0, 2031611, 196608, 0, 2031613, 196608, 0, 1638403, 458752, 3, 1638407, 458752, 3, 1179674, 131072, 0, 1376249, 327680, 2, 1376248, 458752, 0, 983035, 196608, 0, 983038, 196608, 0, 983029, 131072, 0, 983026, 131072, 0, 983027, 196608, 0, 983028, 196608, 0, 983036, 131072, 0, 983037, 131072, 0, 393212, 196608, 0)
+
+[node name="Torches" type="Node2D" parent="."]
+
+[node name="Torch" parent="Torches" instance=ExtResource("3_6nq76")]
+position = Vector2(157, 228)
+
+[node name="Torch2" parent="Torches" instance=ExtResource("3_6nq76")]
+position = Vector2(225, 52)
+
+[node name="Torch3" parent="Torches" instance=ExtResource("3_6nq76")]
+position = Vector2(488, 180)
+
+[node name="Torch4" parent="Torches" instance=ExtResource("3_6nq76")]
+position = Vector2(472, 196)
+
+[node name="Torch5" parent="Torches" instance=ExtResource("3_6nq76")]
+position = Vector2(456, 212)
+
+[node name="Torch6" parent="Torches" instance=ExtResource("3_6nq76")]
+position = Vector2(439, 228)
+
+[node name="Torch7" parent="Torches" instance=ExtResource("3_6nq76")]
+position = Vector2(396, 292)
+
+[node name="Torch8" parent="Torches" instance=ExtResource("3_6nq76")]
+position = Vector2(303, 356)
+
+[node name="Torch9" parent="Torches" instance=ExtResource("3_6nq76")]
+position = Vector2(413, 356)
+
+[node name="Torch10" parent="Torches" instance=ExtResource("3_6nq76")]
+position = Vector2(364, 484)
+
+[node name="Torch11" parent="Torches" instance=ExtResource("3_6nq76")]
+position = Vector2(419, 484)
+
+[node name="Torch12" parent="Torches" instance=ExtResource("3_6nq76")]
+position = Vector2(71, 436)
+
+[node name="Torch13" parent="Torches" instance=ExtResource("3_6nq76")]
+position = Vector2(104, 436)
+
+[node name="Torch14" parent="Torches" instance=ExtResource("3_6nq76")]
+position = Vector2(60, 356)
+
+[node name="Torch15" parent="Torches" instance=ExtResource("3_6nq76")]
+position = Vector2(115, 356)
+
+[node name="Torch16" parent="Torches" instance=ExtResource("3_6nq76")]
+position = Vector2(-225, 371)
+
+[node name="Torch17" parent="Torches" instance=ExtResource("3_6nq76")]
+position = Vector2(-97, 308)
+
+[node name="Torch18" parent="Torches" instance=ExtResource("3_6nq76")]
+position = Vector2(-232, 228)
+
+[node name="Torch19" parent="Torches" instance=ExtResource("3_6nq76")]
+position = Vector2(-80, 84)
+
+[node name="Torch20" parent="Torches" instance=ExtResource("3_6nq76")]
+position = Vector2(-33, 84)
+
+[node name="Torch21" parent="Torches" instance=ExtResource("3_6nq76")]
+position = Vector2(43, 228)
 
 [node name="Player" parent="." instance=ExtResource("2_3oxgt")]
 process_mode = 1
