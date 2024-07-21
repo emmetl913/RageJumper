@@ -23,6 +23,7 @@ func _ready():
 	health = player.health
 	old_health = health +1 
 	print("Number of gems in level: ", number_of_gems_in_level)
+	print("Current GWI: ", Besttime.GLOBAL_WORLD_INDEX)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -47,6 +48,7 @@ func _process(delta):
 						Besttime.bestmin[timesave_index] = minutes
 						Besttime.bestsec[timesave_index] = seconds
 						Besttime.bestmsec[timesave_index] = msec
+				print("About to save world: ", Besttime.GLOBAL_WORLD_INDEX, " and index: ", timesave_index)
 				Besttime.save(Besttime.GLOBAL_WORLD_INDEX ,timesave_index, Besttime.bestmin[timesave_index], Besttime.bestsec[timesave_index], Besttime.bestmsec[timesave_index])
 				print("New: Best min: ", Besttime.bestmin[timesave_index], " Best sec: ", Besttime.bestsec[timesave_index], " Best msec: ", Besttime.bestmsec[timesave_index])
 			print("Current Run: Best min: ", minutes, " Best sec: ", seconds, " Best msec: ", msec)
