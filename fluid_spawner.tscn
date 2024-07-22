@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cr670jm7ut8y4"]
+
+[ext_resource type="Texture2D" uid="uid://63pvabajg5u7" path="res://assets/spot.png" id="2_fn0oo"]
+[ext_resource type="Texture2D" uid="uid://dfg7nwnhxy20e" path="res://assets/spawner.png" id="2_x74kr"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xmft1"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(-6, 3, 1)
+gravity = Vector3(0, 19, 0)
+
+[node name="Fluid Spawner" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -9)
+texture = ExtResource("2_x74kr")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, 2)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_xmft1")
+texture = ExtResource("2_fn0oo")
+lifetime = 2.5
+collision_base_size = 2.0
