@@ -80,21 +80,22 @@ texture = ExtResource("4_e3gbx")
 [sub_resource type="TileSet" id="TileSet_r1utk"]
 sources/0 = SubResource("TileSetAtlasSource_mp3na")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yxs2b"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lomfs"]
 texture = ExtResource("6_2opjy")
-0:0/animation_columns = 4
+0:0/animation_frame_0/duration = 0.25
+0:0/animation_frame_1/duration = 0.2
+0:0/animation_frame_2/duration = 0.2
+0:0/animation_frame_3/duration = 0.2
 0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
 0:2/0 = 0
+0:1/animation_frame_0/duration = 0.2
+0:1/animation_frame_1/duration = 0.2
+0:1/animation_frame_2/duration = 0.2
+0:1/animation_frame_3/duration = 0.2
+0:1/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_02f7m"]
-sources/0 = SubResource("TileSetAtlasSource_yxs2b")
+sources/1 = SubResource("TileSetAtlasSource_lomfs")
 
 [sub_resource type="Gradient" id="Gradient_802i1"]
 offsets = PackedFloat32Array(0.440273, 0.716724)
@@ -141,10 +142,14 @@ format = 2
 layer_0/tile_data = PackedInt32Array(458764, 524288, 0, 458765, 262144, 0, 458766, 262144, 0, 983048, 262144, 0, 983049, 262144, 0, 983050, 262144, 0, 983051, 327680, 0, 983047, 262144, 0, 720899, 327680, 0, 720898, 262144, 0, 1769480, 262144, 0, 1769479, 262144, 0, 1769478, 262144, 0, 1769477, 262144, 0, 1769481, 262144, 0, 3080196, 327680, 0, 3145732, 393216, 0, 3145731, 458752, 0, 3342347, 458752, 0, 3866631, 262144, 0, 3866630, 589824, 0, 4784134, 589824, 0, 4784135, 262144, 0, 4784136, 262144, 0, 4915212, 524288, 0, 4915213, 262144, 0, 4915214, 262144, 0, 4980748, 196608, 0, 5046284, 196608, 0, 1703943, 786432, 2, 5111814, 786432, 2, 5111815, 786432, 2, 5111816, 786432, 2)
 
 [node name="Water" type="TileMap" parent="."]
+modulate = Color(1, 1, 1, 0.654902)
 texture_filter = 1
 tile_set = SubResource("TileSet_02f7m")
 format = 2
-layer_0/tile_data = PackedInt32Array(2424846, 0, 536870912, 2424845, 0, 536870912, 2424844, 0, 536870912, 2424843, 0, 536870912, 2424842, 0, 536870912)
+layer_0/name = "Running Water"
+layer_0/tile_data = PackedInt32Array(2424846, 1, 805306368, 2424845, 1, 805306368, 2424844, 1, 805306368, 2424843, 1, 805306368, 2424842, 1, 805306368, 2424841, 1, 1610612736, 2490377, 1, 1610612736, 2555913, 1, 1610612736, 2621449, 1, 1610612736, 2686985, 1, 1610612736, 2752521, 1, 1610612736, 2818057, 1, 1610612736, 2883593, 1, 1610612736, 2949129, 1, 1610612736, 3014665, 1, 1610612736, 3080201, 1, 1610612736, 3145737, 1, 1610612736, 3211273, 1, 1610612736, 3276809, 1, 1610612736, 3342345, 1, 1610612736, 3407881, 1, 1610612736, 3473417, 1, 1610612736, 3538953, 1, 1610612736, 3604489, 1, 1610612736, 3670025, 1, 1610612736, 3735561, 1, 1610612736, 3801097, 1, 1610612736, 3866633, 1, 1610612736, 2424847, 1, 536870913)
+layer_1/name = "Sitting Water"
+layer_1/tile_data = PackedInt32Array(3866632, 1, 2, 3866633, 1, 2, 3866634, 1, 2)
 
 [node name="SacredGemNode" parent="." instance=ExtResource("5_t6bdd")]
 position = Vector2(56, 1255)
