@@ -79,12 +79,24 @@ texture = ExtResource("4_e3gbx")
 [sub_resource type="TileSet" id="TileSet_r1utk"]
 sources/0 = SubResource("TileSetAtlasSource_mp3na")
 
-[sub_resource type="Gradient" id="Gradient_0egue"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dhrhb"]
+texture = ExtResource("4_ifjrn")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 8, -6.125, 3.5, 6, 3.5, 6.375, 8)
+0:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(-1, -6.5, -0.9375, 3.75, 0.9375, 3.6875, 1, -6.5)
+
+[sub_resource type="TileSet" id="TileSet_denni"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_dhrhb")
+
+[sub_resource type="Gradient" id="Gradient_802i1"]
 offsets = PackedFloat32Array(0.440273, 0.716724)
 colors = PackedColorArray(0.439049, 0.439049, 0.439049, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ons3j"]
-gradient = SubResource("Gradient_0egue")
+gradient = SubResource("Gradient_802i1")
 width = 128
 height = 128
 fill = 1
@@ -273,6 +285,7 @@ layout_mode = 2
 texture = ExtResource("15_f5x57")
 
 [node name="health3" type="TextureRect" parent="Camera2D/UILayer/UI/Health"]
+visible = false
 layout_mode = 2
 texture = ExtResource("15_f5x57")
 

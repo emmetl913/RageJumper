@@ -338,6 +338,7 @@ pitch_scale = 0.81
 stream = ExtResource("10_jcywi")
 
 [node name="deathanim" parent="." instance=ExtResource("7_uain0")]
+process_mode = 3
 z_index = 3
 
 [node name="CoyoteTimer" type="Timer" parent="."]

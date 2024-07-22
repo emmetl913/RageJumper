@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://b81a60262iyhb" path="res://assets/levelbutton.png" id="1_n52kp"]
 [ext_resource type="Texture2D" uid="uid://cmm1e8ah7lpqa" path="res://assets/levelbuttonhover.png" id="2_crh4o"]
 
-[sub_resource type="Gradient" id="Gradient_vrnlu"]
+[sub_resource type="Gradient" id="Gradient_agtjd"]
 offsets = PackedFloat32Array(0.980519, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_gdo2i"]
-gradient = SubResource("Gradient_vrnlu")
+gradient = SubResource("Gradient_agtjd")
 fill_from = Vector2(1, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3yxor"]
